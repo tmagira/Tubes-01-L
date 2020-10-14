@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:hint="Makan Apa"
+        android:id="@+id/judul"
+        android:textAlignment="center"></TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Makan Apa Hari ini?"
+        android:id="@+id/textMakan"
+        android:layout_centerInParent="true"
+    />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textMakan"
+        android:hint="Cari"
+        android:textAlignment="center"
+        android:layout_centerInParent="true"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mau Makan Apa Hari Ini?"
-            android:layout_marginBottom="50sp"
-            android:textSize="30sp"/>
 
-        <Button
-            android:id="@+id/btn_cari"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cari"/>
-
-    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
