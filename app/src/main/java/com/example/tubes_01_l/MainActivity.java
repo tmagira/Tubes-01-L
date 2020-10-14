@@ -11,6 +11,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //test
+<<<<<<< HEAD
         //
+=======
+>>>>>>> parent of 51ce228... Add Setter, Getter, Constructor Menu and temporary main activity layout
     }
 }
