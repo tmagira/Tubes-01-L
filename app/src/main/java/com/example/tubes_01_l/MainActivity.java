@@ -6,11 +6,16 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ListView;
 
-public class MainActivity extends AppCompatActivity implements FragmentListener{
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements FragmentListener, MenuPresenter.View{
 
     private MenuFragment menuFragment;
     private MainFragment mainFragment;
+    private MenuPresenter menuPresenter;
+    private ListView lstFoods;
 
     FragmentManager fragmentManager;
     FragmentTransaction ft;
@@ -23,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         this.menuFragment = MenuFragment.newInstance();
         this.mainFragment = MainFragment.newInstance();
         this.fragmentManager = this.getSupportFragmentManager();
+
+
+        this.menuPresenter = new MenuPresenter(this);
 
         changePage(1);
     }
@@ -44,8 +52,10 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         }else if(page==2){
             if(this.menuFragment.isAdded()){
                 ft.show(this.menuFragment);
+                this.menuPresenter.initData();
             }else{
                 ft.add(R.id.fragment_container,this.menuFragment).addToBackStack(null);
+                this.menuPresenter.initData();
             }
             if(this.mainFragment.isAdded()){
                 ft.hide(this.mainFragment);
@@ -59,5 +69,10 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     public void closeApplication() {
         this.moveTaskToBack(true);
         this.finish();
+    }
+
+    @Override
+    public void addData(List<Menu> menus) {
+
     }
 }

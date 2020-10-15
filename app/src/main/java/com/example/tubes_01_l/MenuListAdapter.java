@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class MenuListAdapter extends BaseAdapter {
 
     private List<Menu> listMenu;
     private Activity activity;
+    private TextView title;
 
     public MenuListAdapter(Activity activity) {
         this.listMenu = listMenu;
@@ -52,6 +54,8 @@ public class MenuListAdapter extends BaseAdapter {
         View convertView = LayoutInflater.from(this.activity).inflate(R.layout.item_list_menu, parent, false);
         Menu currentMenu = (Menu)this.getItem(i);
 
+        this.title = view.findViewById(R.id.tv_menu_title);
+        this.title.setText(currentMenu.title);
         //currentMenu.title
 
         //NOT DONE YET HEHE
