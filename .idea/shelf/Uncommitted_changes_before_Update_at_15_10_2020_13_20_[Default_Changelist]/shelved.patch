@@ -1,0 +1,41 @@
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#Wed Oct 14 21:47:59 ICT 2020\r\ndistributionBase=GRADLE_USER_HOME\r\ndistributionPath=wrapper/dists\r\nzipStoreBase=GRADLE_USER_HOME\r\nzipStorePath=wrapper/dists\r\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-6.5-bin.zip\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+--- gradle/wrapper/gradle-wrapper.properties	(revision e8747411f33b4081ffbb995cec5ed64d841c860d)
++++ gradle/wrapper/gradle-wrapper.properties	(date 1602742129130)
+@@ -1,6 +1,6 @@
+-#Wed Oct 14 21:47:59 ICT 2020
++#Thu Oct 15 13:08:49 ICT 2020
+ distributionBase=GRADLE_USER_HOME
+ distributionPath=wrapper/dists
+ zipStoreBase=GRADLE_USER_HOME
+ zipStorePath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-bin.zip
++distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-all.zip
+Index: app/src/main/java/com/example/tubes_01_l/LeftFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/tubes_01_l/LeftFragment.java	(date 1602742806316)
++++ app/src/main/java/com/example/tubes_01_l/LeftFragment.java	(date 1602742806316)
+@@ -0,0 +1,15 @@
++package com.example.tubes_01_l;
++
++import android.view.View;
++
++import androidx.fragment.app.Fragment;
++
++public class LeftFragment extends Fragment implements View.OnClickListener {
++Fragemnt
++
++
++    @Override
++    public void onClick(View v) {
++
++    }
++}
