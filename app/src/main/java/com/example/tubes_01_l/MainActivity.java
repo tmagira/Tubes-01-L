@@ -22,6 +22,9 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
 
         this.menuFragment = MenuFragment.newInstance();
         this.mainFragment = MainFragment.newInstance();
+        this.fragmentManager = this.getSupportFragmentManager();
+
+        changePage(1);
     }
 
     @Override
