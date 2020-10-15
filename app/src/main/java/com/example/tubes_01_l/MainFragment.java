@@ -9,15 +9,15 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-public class MenuFragment extends Fragment {
+public class MainFragment extends Fragment {
     private FragmentManager fragmentManager;
     private FragmentListener listener;
 
-    public MenuFragment(){}
+    public MainFragment(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.menu_fragment,container, false);
+        View view = inflater.inflate(R.layout.fragment_main,container, false);
 
         return view;
     }
@@ -32,8 +32,8 @@ public class MenuFragment extends Fragment {
         }
     }
 
-    public static MenuFragment newInstance(){
-        MenuFragment fragment = new MenuFragment();
+    public static MainFragment newInstance(){
+        MainFragment fragment = new MainFragment();
 //        Bundle args = new Bundle();
 //        args.putString("title", title);
 //        fragment.setArguments(args);
