@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements FragmentListener, MenuPresenter.View{
+public class MainActivity extends AppCompatActivity implements FragmentListener{
 
     private MenuFragment menuFragment;
     private MainFragment mainFragment;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener,
         this.fragmentManager = this.getSupportFragmentManager();
 
 
-        this.menuPresenter = new MenuPresenter(this);
+       // this.menuPresenter = new MenuPresenter(this);
 
         changePage(1);
     }
@@ -52,10 +52,10 @@ public class MainActivity extends AppCompatActivity implements FragmentListener,
         }else if(page==2){
             if(this.menuFragment.isAdded()){
                 ft.show(this.menuFragment);
-                this.menuPresenter.initData();
+              //  this.menuPresenter.initData();
             }else{
                 ft.add(R.id.fragment_container,this.menuFragment).addToBackStack(null);
-                this.menuPresenter.initData();
+               // this.menuPresenter.initData();
             }
             if(this.mainFragment.isAdded()){
                 ft.hide(this.mainFragment);
@@ -71,8 +71,8 @@ public class MainActivity extends AppCompatActivity implements FragmentListener,
         this.finish();
     }
 
-    @Override
-    public void addData(List<Menu> menus) {
-
-    }
+//    @Override
+//    public void addData(List<Menu> menus) {
+//
+//    }
 }
