@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //test
         super.onCreate(savedInstanceState);
         this.binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = this.binding.getRoot();
