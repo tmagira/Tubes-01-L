@@ -5,16 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Bundle;
 import android.util.Log;
-<<<<<<< HEAD
 import android.view.View;
-=======
-import android.widget.ListView;
->>>>>>> ff234008204d22eacb5ccbe2b144023b89120cb7
 
-import com;
+import com.example.tubes_01_l.databinding.ActivityMainBinding;
+
 
 public class MainActivity extends AppCompatActivity implements FragmentListener {
 
