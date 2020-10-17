@@ -12,8 +12,6 @@ public class Menu {
         this.title = title;
     }
 
-    public Menu(){}
-
     public void setTitle(String title) {
         this.title = title;
     }

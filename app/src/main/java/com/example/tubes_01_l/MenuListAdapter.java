@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MenuListAdapter extends BaseAdapter {
@@ -16,7 +17,7 @@ public class MenuListAdapter extends BaseAdapter {
     private TextView title;
 
     public MenuListAdapter(Activity activity) {
-        this.listMenu = listMenu;
+        this.listMenu = new ArrayList<Menu>();
         this.activity = activity;
     }
 
@@ -36,7 +37,7 @@ public class MenuListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return listMenu.size();
+        return this.listMenu.size();
     }
 
     @Override
@@ -54,11 +55,11 @@ public class MenuListAdapter extends BaseAdapter {
         View convertView = LayoutInflater.from(this.activity).inflate(R.layout.item_list_menu, parent, false);
         Menu currentMenu = (Menu)this.getItem(i);
 
-        this.title = view.findViewById(R.id.tv_menu_title);
+        this.title = convertView.findViewById(R.id.tv_menu_title);
         this.title.setText(currentMenu.title);
         //currentMenu.title
 
         //NOT DONE YET HEHE
-        return null;
+        return convertView;
     }
 }

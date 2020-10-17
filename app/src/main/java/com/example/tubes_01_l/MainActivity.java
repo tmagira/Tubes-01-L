@@ -8,11 +8,16 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
+<<<<<<< HEAD
 import android.view.View;
+=======
+import android.widget.ListView;
+>>>>>>> ff234008204d22eacb5ccbe2b144023b89120cb7
 
 import com;
 
 public class MainActivity extends AppCompatActivity implements FragmentListener {
+
 
     private MenuFragment menuFragment;
     private MainFragment mainFragment;
