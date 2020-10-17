@@ -2,11 +2,12 @@ package com.example.tubes_01_l;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -34,6 +35,12 @@ public class MenuFragment extends Fragment implements MenuPresenter.IMainActivit
         this.presenter.loadData();
         this.listMenus.setAdapter(this.adapter);
 
+        this.listMenus.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("debug", "onItemClick: clicked "+position);
+            }
+        });
 
         return view;
     }
@@ -50,9 +57,6 @@ public class MenuFragment extends Fragment implements MenuPresenter.IMainActivit
 
     public static MenuFragment newInstance(){
         MenuFragment fragment = new MenuFragment();
-//        Bundle args = new Bundle();
-//        args.putString("title", title);
-//        fragment.setArguments(args);
         return fragment;
     }
 
@@ -60,4 +64,6 @@ public class MenuFragment extends Fragment implements MenuPresenter.IMainActivit
     public void updateList(List<Menu> foods) {
         this.adapter.updateArray(foods);
     }
+
+
 }
