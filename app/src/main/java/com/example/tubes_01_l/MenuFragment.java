@@ -39,6 +39,7 @@ public class MenuFragment extends Fragment implements MenuPresenter.IMainActivit
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("debug", "onItemClick: clicked "+position);
+                listener.changePage(3);
             }
         });
 

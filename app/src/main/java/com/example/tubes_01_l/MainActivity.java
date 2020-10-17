@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
 
     private MenuFragment menuFragment;
     private MainFragment mainFragment;
+    private MenuDetailsFragment menuDetailsFragment;
     FragmentManager fragmentManager;
     FragmentTransaction ft;
     ActivityMainBinding binding;
@@ -38,8 +39,11 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         this.fragmentManager = this.getSupportFragmentManager();
         this.mainFragment = MainFragment.newInstance();
         this.menuFragment = MenuFragment.newInstance();
+        this.menuDetailsFragment = MenuDetailsFragment.newInstance();
+
         FragmentTransaction ft = this.fragmentManager.beginTransaction();
         ft.add(R.id.fragment_container, this.mainFragment).addToBackStack(null).commit();
+
     }
 
     @Override
@@ -65,9 +69,25 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
             if (this.mainFragment.isAdded()) {
                 ft.hide(this.mainFragment);
             }
-            this.ft.commit();
-            this.binding.drawerLayout.closeDrawers();
+            if(this.menuDetailsFragment.isAdded()){
+                ft.hide(this.menuDetailsFragment);
+            }
+        }else if (page == 3) {
+            if (this.menuDetailsFragment.isAdded()) {
+                ft.show(this.menuDetailsFragment);
+            } else {
+                ft.add(R.id.fragment_container, this.menuDetailsFragment).addToBackStack(null);
+            }
+            if (this.mainFragment.isAdded()) {
+                ft.hide(this.mainFragment);
+            }
+            if(this.menuFragment.isAdded()){
+                ft.hide((this.menuFragment));
+            }
+
         }
+        this.ft.commit();
+        this.binding.drawerLayout.closeDrawers();
     }
 
     @Override
