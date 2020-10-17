@@ -55,7 +55,7 @@ public class MenuListAdapter extends BaseAdapter {
         View convertView = LayoutInflater.from(this.activity).inflate(R.layout.item_list_menu, parent, false);
         Menu currentMenu = (Menu)this.getItem(i);
 
-        this.title = view.findViewById(R.id.tv_menu_title);
+        this.title = convertView.findViewById(R.id.tv_menu_title);
         this.title.setText(currentMenu.title);
         //currentMenu.title
 

@@ -31,6 +31,7 @@ public class MenuFragment extends Fragment implements MenuPresenter.IMainActivit
         this.presenter = new MenuPresenter(this);
         this.adapter = new MenuListAdapter(requireActivity());
 
+        this.presenter.loadData();
         this.listMenus.setAdapter(this.adapter);
 
         return view;
