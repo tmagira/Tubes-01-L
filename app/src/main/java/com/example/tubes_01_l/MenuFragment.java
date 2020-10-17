@@ -26,8 +26,6 @@ public class MenuFragment extends Fragment implements MenuPresenter.IMainActivit
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.menu_fragment,container, false);
-<<<<<<< HEAD
-=======
 
         this.listMenus = view.findViewById(R.id.list_menu);
         this.presenter = new MenuPresenter(this);
@@ -36,7 +34,7 @@ public class MenuFragment extends Fragment implements MenuPresenter.IMainActivit
         this.presenter.loadData();
         this.listMenus.setAdapter(this.adapter);
 
->>>>>>> ff234008204d22eacb5ccbe2b144023b89120cb7
+
         return view;
     }
 
