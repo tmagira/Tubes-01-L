@@ -14,16 +14,19 @@ public class MenuListAdapter extends BaseAdapter {
 
     private List<Menu> listMenu;
     private Activity activity;
-    private TextView title;
 
     public MenuListAdapter(Activity activity) {
         this.listMenu = new ArrayList<Menu>();
         this.activity = activity;
     }
 
-//    public ViewHolder(View view){
-//
-//    }
+    private class ViewHolder{
+        protected TextView title;
+
+        public ViewHolder(View view) {
+            this.title = view.findViewById(R.id.tv_menu_title);
+        }
+    }
 
     public void addLine(Menu newMenu){
         this.listMenu.add(newMenu);
@@ -55,11 +58,9 @@ public class MenuListAdapter extends BaseAdapter {
         View convertView = LayoutInflater.from(this.activity).inflate(R.layout.item_list_menu, parent, false);
         Menu currentMenu = (Menu)this.getItem(i);
 
-        this.title = convertView.findViewById(R.id.tv_menu_title);
-        this.title.setText(currentMenu.title);
-        //currentMenu.title
+        ViewHolder viewHolder = new ViewHolder(convertView);
+        viewHolder.title.setText(currentMenu.title);
 
-        //NOT DONE YET HEHE
         return convertView;
     }
 }

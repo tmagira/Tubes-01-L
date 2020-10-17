@@ -18,8 +18,8 @@ public class MenuPresenter {
     }
 
     void loadData(){
-        for (Menu f:MockMenu.foodObjectArr) {
-            this.menus.add(f);
+        for (Menu menu:MockMenu.foodObjectArr) {
+            this.menus.add(menu);
         }
         this.ui.updateList(this.menus);
     }
@@ -28,7 +28,7 @@ public class MenuPresenter {
         this.ui.updateList(this.menus);
     }
     public void addList(String title, String detail){
-        this.menus.add(new Menu(title));
+        this.menus.add(new Menu(title,detail));
         this.ui.updateList(this.menus);
         //this.ui.resetAddForm();
     }

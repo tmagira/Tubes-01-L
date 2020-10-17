@@ -1,13 +1,14 @@
 package com.example.tubes_01_l;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
 import com.example.tubes_01_l.databinding.ActivityMainBinding;
 
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
 
         this.fragmentManager = this.getSupportFragmentManager();
         this.mainFragment = MainFragment.newInstance();
+        this.menuFragment = MenuFragment.newInstance();
         FragmentTransaction ft = this.fragmentManager.beginTransaction();
         ft.add(R.id.fragment_container, this.mainFragment).addToBackStack(null).commit();
     }
