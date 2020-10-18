@@ -96,4 +96,13 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         this.finish();
         this.binding.drawerLayout.closeDrawers();
     }
+
+    public void passMenu(String title) {
+        this.ft = this.fragmentManager.beginTransaction();
+        //MenuDetailsFragment detailsFragment = new MenuDetailsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("title",title);
+       this.menuDetailsFragment.setArguments(bundle);
+        changePage(3);
+    }
 }
