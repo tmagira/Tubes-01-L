@@ -25,13 +25,48 @@ public class MenuDetailsFragment extends Fragment {
 
         this.tvTitle = view.findViewById(R.id.details_title);
         this.tvDeskripsi = view.findViewById(R.id.details_deskripsi);
+        this.tvTag = view.findViewById(R.id.details_tag);
+        this.tvBahan = view.findViewById(R.id.details_bahan);
+        this.tvLangkah = view.findViewById(R.id.details_langkah_masak);
+        this.tvResto = view.findViewById(R.id.details_resto);
 
         Bundle b = getArguments();
             if(b!=null){
                 Menu menu = b.getParcelable("menu");
-                Log.d("debug", "onCreateView: "+menu.title);
                 this.tvTitle.setText(menu.title);
-                //this.tvDeskripsi.setText(b.getString("deskripsi"));
+                this.tvDeskripsi.setText(menu.deskripsi);
+
+                String tags = "";
+                for(int i=0;i<menu.tag.length;i++){
+                    if(i!=menu.tag.length-1){
+                        tags+=menu.tag[i]+", ";
+                    }else{
+                        tags+=menu.tag[i];
+                    }
+                }
+                this.tvTag.setText(tags);
+
+                String bahan = "";
+                for(int i=0;i<menu.bahan.length;i++){
+                    bahan+= menu.bahan[i] + "\n";
+                }
+                this.tvBahan.setText(bahan);
+
+                String langkah = "";
+                for(int i=0;i<menu.langkahMasak.length;i++){
+                    langkah+=i+1+". "+menu.langkahMasak[i]+"\n";
+                }
+                this.tvLangkah.setText(langkah);
+
+                String resto="";
+                for(int i=0;i<menu.resto.length;i++){
+                    if(i!=menu.resto.length-1){
+                        resto+=menu.resto[i]+", ";
+                    }else{
+                        resto+=menu.resto[i];
+                    }
+                }
+                this.tvResto.setText(resto);
 
             }else{
                 Log.d("debug", "onCreateView: Menu Not Found");

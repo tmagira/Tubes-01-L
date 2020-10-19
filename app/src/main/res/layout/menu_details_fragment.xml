@@ -38,7 +38,7 @@
                 android:layout_marginLeft="10sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Deskripsi" />
+                android:text="Deskripsi tidak ditemukan" />
 
         </LinearLayout>
 
@@ -58,7 +58,7 @@
                 android:layout_marginLeft="10sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tag, Tag, Tag" />
+                android:text="tag tidak ditemukan" />
 
         </LinearLayout>
 
@@ -78,7 +78,7 @@
                 android:layout_marginLeft="10sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bahan, Bahan, Bahan" />
+                android:text="bahan tidak ditemukan" />
 
         </LinearLayout>
 
@@ -98,7 +98,7 @@
                 android:layout_marginLeft="10sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Langkah, Langkah" />
+                android:text="langkah tidak ditemukan" />
 
         </LinearLayout>
         <LinearLayout
@@ -117,7 +117,7 @@
                 android:layout_marginLeft="10sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Resto, resto" />
+                android:text="resto tidak ditemukan" />
 
         </LinearLayout>
     </LinearLayout>
