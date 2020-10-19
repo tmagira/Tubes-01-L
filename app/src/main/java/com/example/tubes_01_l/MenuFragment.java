@@ -41,7 +41,7 @@ public class MenuFragment extends Fragment implements MenuPresenter.IMainActivit
                 Log.d("debug", "onItemClick: clicked "+position);
                 MainActivity mnl = (MainActivity)getActivity();
                 Menu currentMenu = (Menu)listMenus.getItemAtPosition(position);
-                mnl.passMenu(currentMenu.title);
+                mnl.passMenu(currentMenu);
             }
         });
 

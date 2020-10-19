@@ -1,6 +1,9 @@
 package com.example.tubes_01_l;
 
-public class Menu {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Menu implements Parcelable {
     String title;
     String deskripsi;
     String[] tag;
@@ -17,6 +20,27 @@ public class Menu {
         this.langkahMasak  = langkahMasak;
         this.resto = resto;
     }
+
+    protected Menu(Parcel in) {
+        title = in.readString();
+        deskripsi = in.readString();
+        tag = in.createStringArray();
+        bahan = in.createStringArray();
+        langkahMasak = in.createStringArray();
+        resto = in.createStringArray();
+    }
+
+    public static final Creator<Menu> CREATOR = new Creator<Menu>() {
+        @Override
+        public Menu createFromParcel(Parcel in) {
+            return new Menu(in);
+        }
+
+        @Override
+        public Menu[] newArray(int size) {
+            return new Menu[size];
+        }
+    };
 
     public void setTitle(String title) {
         this.title = title;
@@ -64,5 +88,20 @@ public class Menu {
 
     public String[] getResto() {
         return resto;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.title);
+        dest.writeString(this.deskripsi);
+        dest.writeStringArray(this.tag);
+        dest.writeStringArray(this.bahan);
+        dest.writeStringArray(this.langkahMasak);
+        dest.writeStringArray(this.resto);
     }
 }

@@ -15,7 +15,7 @@ public class MenuDetailsFragment extends Fragment {
     private FragmentManager fragmentManager;
     private FragmentListener listener;
 
-    private TextView tv;
+    private TextView tvTitle, tvDeskripsi, tvTag, tvBahan, tvLangkah, tvResto;
 
     public MenuDetailsFragment(){}
 
@@ -23,11 +23,16 @@ public class MenuDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.menu_details_fragment,container, false);
 
-        this.tv = view.findViewById(R.id.details_title);
+        this.tvTitle = view.findViewById(R.id.details_title);
+        this.tvDeskripsi = view.findViewById(R.id.details_deskripsi);
+
         Bundle b = getArguments();
             if(b!=null){
-                String title = b.getString("title");
-                this.tv.setText(title);
+                Menu menu = b.getParcelable("menu");
+                Log.d("debug", "onCreateView: "+menu.title);
+                this.tvTitle.setText(menu.title);
+                //this.tvDeskripsi.setText(b.getString("deskripsi"));
+
             }else{
                 Log.d("debug", "onCreateView: Menu Not Found");
             }
