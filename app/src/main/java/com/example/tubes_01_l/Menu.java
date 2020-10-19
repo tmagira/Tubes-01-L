@@ -8,9 +8,14 @@ public class Menu {
     String[] langkahMasak;
     String[] resto;
 
-    public Menu(String title, String deskripsi) {
+    public Menu(String title, String deskripsi, String[] tag,
+                String[] bahan, String[] langkahMasak, String[] resto) {
         this.title = title;
         this.deskripsi = deskripsi;
+        this.tag = tag;
+        this.bahan = bahan;
+        this.langkahMasak  = langkahMasak;
+        this.resto = resto;
     }
 
     public void setTitle(String title) {
