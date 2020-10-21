@@ -15,10 +15,11 @@ import com.example.tubes_01_l.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity implements FragmentListener {
 
-
     private MenuFragment menuFragment;
     private MainFragment mainFragment;
     private MenuDetailsFragment menuDetailsFragment;
+    private AddMenuFragment addMenuFragment;
+
     FragmentManager fragmentManager;
     FragmentTransaction ft;
     ActivityMainBinding binding;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         this.mainFragment = MainFragment.newInstance();
         this.menuFragment = MenuFragment.newInstance();
         this.menuDetailsFragment = MenuDetailsFragment.newInstance();
+        this.addMenuFragment = AddMenuFragment.newInstance();
 
         FragmentTransaction ft = this.fragmentManager.beginTransaction();
         ft.add(R.id.fragment_container, this.mainFragment).addToBackStack(null).commit();
@@ -87,7 +89,18 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
             if(this.menuFragment.isAdded()){
                 ft.hide((this.menuFragment));
             }
-
+        }else if (page == 4) {
+            if (this.addMenuFragment.isAdded()) {
+                ft.show(this.addMenuFragment);
+            } else {
+                ft.add(R.id.fragment_container, this.addMenuFragment).addToBackStack(null);
+            }
+            if (this.mainFragment.isAdded()) {
+                ft.hide(this.mainFragment);
+            }
+            if(this.menuFragment.isAdded()){
+                ft.hide((this.menuFragment));
+            }
         }
         this.ft.commit();
         this.binding.drawerLayout.closeDrawers();
@@ -102,14 +115,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
 
     public void passMenu(Menu menu) {
         this.ft = this.fragmentManager.beginTransaction();
-        //MenuDetailsFragment detailsFragment = new MenuDetailsFragment();
         Bundle bundle = new Bundle();
-//        bundle.putString("title",title);
-//        bundle.putString("deskripsi", deskripsi);
-//        bundle.putStringArray("tag", tag);
-//        bundle.putStringArray("bahan", bahan);
-//        bundle.putStringArray("langkahMasak", langkahMasak);
-//        bundle.putStringArray("resto", resto);
         bundle.putParcelable("menu", menu);
         this.menuDetailsFragment.setArguments(bundle);
         changePage(3);
