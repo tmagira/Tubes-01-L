@@ -12,6 +12,8 @@ import android.widget.ListView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.List;
 
 public class MenuFragment extends Fragment implements MenuPresenter.IMainActivity {
@@ -21,6 +23,7 @@ public class MenuFragment extends Fragment implements MenuPresenter.IMainActivit
     private MenuListAdapter adapter;
     private FragmentManager fragmentManager;
     private FragmentListener listener;
+    private FloatingActionButton fabAdd;
 
     public MenuFragment(){}
 
@@ -31,6 +34,7 @@ public class MenuFragment extends Fragment implements MenuPresenter.IMainActivit
         this.listMenus = view.findViewById(R.id.list_menu);
         this.presenter = new MenuPresenter(this);
         this.adapter = new MenuListAdapter(requireActivity());
+        this.fabAdd = view.findViewById(R.id.fab_add);
 
         this.presenter.loadData();
         this.listMenus.setAdapter(this.adapter);
