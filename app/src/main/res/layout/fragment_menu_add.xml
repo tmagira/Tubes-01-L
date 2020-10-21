@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15sp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tambah Makanan"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:layout_marginBottom="20sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Makanan"/>
+
+        <EditText
+            android:id="@+id/ed_new_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Deskripsi Makanan"/>
+
+        <EditText
+            android:id="@+id/ed_new_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tag(s)"/>
+
+        <EditText
+            android:id="@+id/ed_new_tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="(Pisahkan dengan tanda koma)"
+            android:layout_marginBottom="10sp"
+            android:inputType="textMultiLine"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bahan-bahan"/>
+
+        <EditText
+            android:id="@+id/ed_new_bahan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="(Pisahkan dengan tanda koma)"
+            android:layout_marginBottom="10sp"
+            android:inputType="textMultiLine"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Langkah Memasak"/>
+
+        <EditText
+            android:id="@+id/ed_new_langkah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="(Pisahkan dengan tanda koma)"
+            android:layout_marginBottom="10sp"
+            android:inputType="textMultiLine"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tersedia di Restoran"/>
+
+        <EditText
+            android:id="@+id/ed_new_resto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="(Pisahkan dengan tanda koma)"
+            android:layout_marginBottom="10sp"
+            android:inputType="textMultiLine"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tambah Makanan"
+            android:id="@+id/btn_tambah_makanan"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
