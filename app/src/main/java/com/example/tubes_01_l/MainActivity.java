@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
             if (this.mainFragment.isAdded()) {
                 ft.show(this.mainFragment);
             } else {
-                ft.add(R.id.fragment_container, this.mainFragment);
+                ft.add(R.id.fragment_container, this.mainFragment).addToBackStack(null);
             }
             if (this.menuFragment.isAdded()) {
                 ft.hide(this.menuFragment);
