@@ -48,7 +48,7 @@ public class MainFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v==this.btnCari){
-            listener.changePage(2);
+            listener.changePage(5);
         }
     }
 }

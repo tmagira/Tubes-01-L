@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     private MainFragment mainFragment;
     private MenuDetailsFragment menuDetailsFragment;
     private AddMenuFragment addMenuFragment;
+    private MenuRandom randomMenu;
+
 
     FragmentManager fragmentManager;
     FragmentTransaction ft;
@@ -30,12 +32,14 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         super.onCreate(savedInstanceState);
         this.binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = this.binding.getRoot();
-       // this.setSupportActionBar(this.binding.toolbar);
         setContentView(view);
+
+       // this.setSupportActionBar(this.binding.toolbar);
 
         ActionBarDrawerToggle abdt = new ActionBarDrawerToggle(this, this.binding.drawerLayout, this.binding.toolbar, 0, 0);
         this.binding.drawerLayout.addDrawerListener(abdt);
         abdt.syncState();
+
 
         this.fragmentManager = this.getSupportFragmentManager();
         this.mainFragment = MainFragment.newInstance();
@@ -94,6 +98,19 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
                 ft.show(this.addMenuFragment);
             } else {
                 ft.add(R.id.fragment_container, this.addMenuFragment).addToBackStack(null);
+            }
+            if (this.mainFragment.isAdded()) {
+                ft.hide(this.mainFragment);
+            }
+            if(this.menuFragment.isAdded()){
+                ft.hide((this.menuFragment));
+            }
+        }
+        else if (page == 5) {
+            if (this.randomMenu.isAdded()) {
+                ft.show(this.randomMenu);
+            } else {
+                ft.add(R.id.fragment_container, this.randomMenu).addToBackStack(null);
             }
             if (this.mainFragment.isAdded()) {
                 ft.hide(this.mainFragment);

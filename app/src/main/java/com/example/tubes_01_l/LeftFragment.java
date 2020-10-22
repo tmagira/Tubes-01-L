@@ -21,6 +21,7 @@ public class LeftFragment extends Fragment implements View.OnClickListener {
 
     public LeftFragment() {
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,6 +59,8 @@ public class LeftFragment extends Fragment implements View.OnClickListener {
             this.activity.changePage(2);
         } else if (v.getId() == binding.exit.getId()) {
             this.activity.closeApplication();
+        } else if (v.getId() == binding.cari.getId()) {
+            this.activity.changePage(5);
         }
     }
 }
