@@ -10,9 +10,13 @@ import android.widget.Button;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-public class MainFragment extends Fragment implements View.OnClickListener{
+import java.util.List;
+
+public class MainFragment extends Fragment implements MenuPresenter.IMainActivity, View.OnClickListener{
     private FragmentManager fragmentManager;
     private FragmentListener listener;
+    private MenuPresenter presenter;
+    private MenuListAdapter adapter;
     private Button btnCari;
 
     public MainFragment(){}
@@ -22,6 +26,10 @@ public class MainFragment extends Fragment implements View.OnClickListener{
         View view = inflater.inflate(R.layout.fragment_main,container, false);
 
         this.btnCari = view.findViewById(R.id.btn_cari);
+        this.presenter = new MenuPresenter((MenuPresenter.IMainActivity) this);
+        this.adapter = new MenuListAdapter(requireActivity());
+
+        this.presenter.loadData();
 
         this.btnCari.setOnClickListener(this);
 
@@ -48,7 +56,18 @@ public class MainFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v==this.btnCari){
-            listener.changePage(2);
+            int length = this.presenter.countItem();
+            int randomNumber = (int) ((Math.random() * length));
+            MainActivity mnl = (MainActivity)getActivity();
+            Menu currentMenu = (Menu)adapter.getItem(randomNumber);
+            mnl.passMenu(currentMenu);
         }
+
+
+    }
+
+    @Override
+    public void updateList(List<Menu> foods) {
+        this.adapter.updateArray(foods);
     }
 }
