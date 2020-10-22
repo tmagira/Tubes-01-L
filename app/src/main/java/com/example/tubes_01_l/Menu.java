@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Menu implements Parcelable {
+    int id=0;
     String title;
     String deskripsi;
     String[] tag;
@@ -11,8 +12,9 @@ public class Menu implements Parcelable {
     String[] langkahMasak;
     String[] resto;
 
-    public Menu(String title, String deskripsi, String[] tag,
+    public Menu(int id,String title, String deskripsi, String[] tag,
                 String[] bahan, String[] langkahMasak, String[] resto) {
+        this.id =id;
         this.title = title;
         this.deskripsi = deskripsi;
         this.tag = tag;
@@ -41,6 +43,9 @@ public class Menu implements Parcelable {
             return new Menu[size];
         }
     };
+    public void setTitle(int id) {
+        this.id = id;
+    }
 
     public void setTitle(String title) {
         this.title = title;
@@ -64,6 +69,10 @@ public class Menu implements Parcelable {
 
     public void setResto(String[] resto) {
         this.resto = resto;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getTitle() {

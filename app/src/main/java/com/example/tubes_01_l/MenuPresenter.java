@@ -35,7 +35,7 @@ public class MenuPresenter {
     }
     public void addList(String title, String deskripsi, String[] tag,
                         String[] bahan, String[] langkahMasak, String[] resto){
-        this.menus.add(new Menu(title,deskripsi, tag, bahan, langkahMasak, resto));
+        this.menus.add(new Menu(+1,title,deskripsi, tag, bahan, langkahMasak, resto));
         this.ui.updateList(this.menus);
         //this.ui.resetAddForm();
     }

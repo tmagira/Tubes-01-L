@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,7 @@ public class MenuDetailsFragment extends Fragment {
     private FragmentListener listener;
 
     public TextView tvTitle, tvDeskripsi, tvTag, tvBahan, tvLangkah, tvResto;
+    public Button bt;
 
     public MenuDetailsFragment(){}
 
@@ -29,6 +31,7 @@ public class MenuDetailsFragment extends Fragment {
         this.tvBahan = view.findViewById(R.id.details_bahan);
         this.tvLangkah = view.findViewById(R.id.details_langkah_masak);
         this.tvResto = view.findViewById(R.id.details_resto);
+        this.bt= view.findViewById(R.id.btn_tambah_makanan);
 
         Bundle b = getArguments();
             if(b!=null){
