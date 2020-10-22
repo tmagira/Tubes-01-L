@@ -2,6 +2,7 @@ package com.example.tubes_01_l;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +11,15 @@ import android.widget.Button;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-public class MainFragment extends Fragment implements View.OnClickListener{
+import java.util.List;
+
+public class MainFragment extends Fragment implements MenuPresenter.IMainActivity, View.OnClickListener{
     private FragmentManager fragmentManager;
     private FragmentListener listener;
     private Button btnCari;
+
+    private MenuPresenter presenter;
+    private MenuListAdapter adapter;
 
     public MainFragment(){}
 
@@ -24,6 +30,14 @@ public class MainFragment extends Fragment implements View.OnClickListener{
         this.btnCari = view.findViewById(R.id.btn_cari);
 
         this.btnCari.setOnClickListener(this);
+
+        this.presenter = new MenuPresenter((MenuPresenter.IMainActivity) this);
+        this.adapter = new MenuListAdapter(requireActivity());
+
+        this.presenter.loadData();
+
+
+
 
         return view;
     }
@@ -48,7 +62,17 @@ public class MainFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v==this.btnCari){
-            listener.changePage(2);
+            int length = this.presenter.countItem();
+            int randomNumber = (int) ((Math.random() * (length)));
+            MainActivity mnl = (MainActivity)getActivity();
+            Menu currentMenu = (Menu)adapter.getItem(randomNumber);
+            mnl.passMenu(currentMenu);
+            Log.d("out", "onClick: "+randomNumber);
         }
+    }
+
+    @Override
+    public void updateList(List<Menu> foods) {
+        this.adapter.updateArray(foods);
     }
 }

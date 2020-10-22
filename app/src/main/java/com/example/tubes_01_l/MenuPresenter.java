@@ -24,6 +24,11 @@ public class MenuPresenter {
         }
         this.ui.updateList(this.menus);
     }
+
+    public int countItem(){
+        return menus.size();
+    }
+
     public void delete(int position){
         this.menus.remove(position);
         this.ui.updateList(this.menus);
