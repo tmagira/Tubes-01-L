@@ -21,7 +21,7 @@ public class LeftFragment extends Fragment implements View.OnClickListener {
 
     public LeftFragment() {
     }
-
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentLeftBinding.inflate(getLayoutInflater());

@@ -21,7 +21,7 @@ public class Menu implements Parcelable {
         this.resto = resto;
     }
 
-    protected Menu(Parcel in) {
+    public Menu(Parcel in) {
         title = in.readString();
         deskripsi = in.readString();
         tag = in.createStringArray();

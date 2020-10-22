@@ -21,7 +21,6 @@
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,12 +29,16 @@
 
     <!-- Left Drawer -->
     <RelativeLayout
-        android:name="com.example.t0318072.LeftFragment"
         android:id="@+id/left_drawer"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="start" >
-
+        android:layout_gravity="start">
+        
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/leftfragment"
+            android:name="com.example.tubes_01_l.LeftFragment"/>
     </RelativeLayout>
 
     <!-- Right Drawer -->

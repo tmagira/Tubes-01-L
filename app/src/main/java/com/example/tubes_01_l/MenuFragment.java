@@ -32,7 +32,7 @@ public class MenuFragment extends Fragment implements MenuPresenter.IMainActivit
         View view = inflater.inflate(R.layout.menu_fragment,container, false);
 
         this.listMenus = view.findViewById(R.id.list_menu);
-        this.presenter = new MenuPresenter(this);
+        this.presenter = new MenuPresenter((MenuPresenter.IMainActivity) this);
         this.adapter = new MenuListAdapter(requireActivity());
         this.fabAdd = view.findViewById(R.id.fab_add);
 
@@ -69,16 +69,16 @@ public class MenuFragment extends Fragment implements MenuPresenter.IMainActivit
         return fragment;
     }
 
-    @Override
-    public void updateList(List<Menu> foods) {
-        this.adapter.updateArray(foods);
-    }
-
 
     @Override
     public void onClick(View v) {
         if(v==this.fabAdd){
             listener.changePage(4);
         }
+    }
+
+    @Override
+    public void updateList(List<Menu> foods) {
+        this.adapter.updateArray(foods);
     }
 }

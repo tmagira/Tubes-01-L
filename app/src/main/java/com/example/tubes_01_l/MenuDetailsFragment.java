@@ -15,7 +15,7 @@ public class MenuDetailsFragment extends Fragment {
     private FragmentManager fragmentManager;
     private FragmentListener listener;
 
-    private TextView tvTitle, tvDeskripsi, tvTag, tvBahan, tvLangkah, tvResto;
+    public TextView tvTitle, tvDeskripsi, tvTag, tvBahan, tvLangkah, tvResto;
 
     public MenuDetailsFragment(){}
 

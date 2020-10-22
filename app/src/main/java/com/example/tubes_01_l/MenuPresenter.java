@@ -1,5 +1,8 @@
 package com.example.tubes_01_l;
 
+
+import com.example.tubes_01_l.Menu;
+import com.example.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +20,7 @@ public class MenuPresenter {
         this.ui = ui;
     }
 
-    void loadData(){
+    public void loadData(){
         for (Menu menu:MockMenu.foodObjectArr) {
             this.menus.add(menu);
         }
