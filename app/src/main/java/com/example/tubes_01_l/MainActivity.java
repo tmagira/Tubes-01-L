@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -19,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     private MainFragment mainFragment;
     private MenuDetailsFragment menuDetailsFragment;
     private AddMenuFragment addMenuFragment;
-    private MenuRandom randomMenu;
 
 
     FragmentManager fragmentManager;
@@ -48,6 +48,15 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         this.addMenuFragment = AddMenuFragment.newInstance();
 
         FragmentTransaction ft = this.fragmentManager.beginTransaction();
+        fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                Fragment fr = fragmentManager.findFragmentById(R.id.menu_list);
+                if(fr!=null){
+                    Log.e("fragment=", fr.getClass().getSimpleName());
+                }
+            }
+        });
         ft.add(R.id.fragment_container, this.mainFragment).addToBackStack(null).commit();
 
     }
@@ -106,19 +115,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
                 ft.hide((this.menuFragment));
             }
         }
-        else if (page == 5) {
-            if (this.randomMenu.isAdded()) {
-                ft.show(this.randomMenu);
-            } else {
-                ft.add(R.id.fragment_container, this.randomMenu).addToBackStack(null);
-            }
-            if (this.mainFragment.isAdded()) {
-                ft.hide(this.mainFragment);
-            }
-            if(this.menuFragment.isAdded()){
-                ft.hide((this.menuFragment));
-            }
-        }
+
         this.ft.commit();
         this.binding.drawerLayout.closeDrawers();
     }

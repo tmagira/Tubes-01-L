@@ -22,7 +22,6 @@ public class MenuListAdapter extends BaseAdapter {
 
     private class ViewHolder{
         protected TextView title;
-
         public ViewHolder(View view) {
             this.title = view.findViewById(R.id.tv_menu_title);
         }
@@ -63,4 +62,6 @@ public class MenuListAdapter extends BaseAdapter {
 
         return convertView;
     }
+
+
 }

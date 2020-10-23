@@ -1,6 +1,7 @@
 package com.example.tubes_01_l;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +26,8 @@ public class AddMenuFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_menu_add,container, false);
-
+        Sqlite.FeedReaderDbHelper dbHelper = new Sqlite.FeedReaderDbHelper(getContext());
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
         this.edTitle = view.findViewById(R.id.ed_new_title);
         this.edDesc = view.findViewById(R.id.ed_new_bahan);
         this.edTag = view.findViewById(R.id.ed_new_tag);
@@ -35,7 +37,6 @@ public class AddMenuFragment extends Fragment implements View.OnClickListener{
         this.btnAdd = view.findViewById(R.id.btn_tambah_makanan);
 
         this.btnAdd.setOnClickListener(this);
-
         return view;
     }
 

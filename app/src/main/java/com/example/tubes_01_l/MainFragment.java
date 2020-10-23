@@ -62,8 +62,6 @@ public class MainFragment extends Fragment implements MenuPresenter.IMainActivit
             Menu currentMenu = (Menu)adapter.getItem(randomNumber);
             mnl.passMenu(currentMenu);
         }
-
-
     }
 
     @Override

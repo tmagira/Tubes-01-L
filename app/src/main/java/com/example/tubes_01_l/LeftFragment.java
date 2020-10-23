@@ -18,6 +18,8 @@ public class LeftFragment extends Fragment implements View.OnClickListener {
     FragmentLeftBinding binding;
     TextView tv1, tv2, tv3, tv4, tv5;
     MainActivity activity;
+    private MenuPresenter presenter;
+    private MenuListAdapter adapter;
 
     public LeftFragment() {
     }
@@ -34,7 +36,6 @@ public class LeftFragment extends Fragment implements View.OnClickListener {
         binding.exit.setOnClickListener(this);
         this.activity = ((MainActivity) getActivity());
         return view;
-
     }
 
     public static LeftFragment newInstance(String title) {
@@ -60,7 +61,12 @@ public class LeftFragment extends Fragment implements View.OnClickListener {
         } else if (v.getId() == binding.exit.getId()) {
             this.activity.closeApplication();
         } else if (v.getId() == binding.cari.getId()) {
-            this.activity.changePage(5);
+            int length = this.presenter.countItem();
+            int randomNumber = (int) ((Math.random() * length));
+            MainActivity mnl = (MainActivity) getActivity();
+            Menu currentMenu = (Menu) adapter.getItem(randomNumber);
+            mnl.passMenu(currentMenu);
         }
     }
+
 }

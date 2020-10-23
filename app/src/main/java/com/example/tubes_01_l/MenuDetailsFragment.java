@@ -92,4 +92,5 @@ public class MenuDetailsFragment extends Fragment {
         return fragment;
     }
 
+
 }
