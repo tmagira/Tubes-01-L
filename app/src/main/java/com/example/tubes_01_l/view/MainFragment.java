@@ -6,14 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.example.tubes_01_l.Sqlite;
-import com.example.tubes_01_l.presenter.MenuPresenter;
 import com.example.tubes_01_l.R;
+import com.example.tubes_01_l.Sqlite;
 import com.example.tubes_01_l.model.Menu;
+import com.example.tubes_01_l.presenter.MenuPresenter;
 
 import java.util.List;
 
@@ -62,11 +63,16 @@ public class MainFragment extends Fragment implements MenuPresenter.IMainActivit
     @Override
     public void onClick(View v) {
         if(v==this.btnCari){
-            int length = this.presenter.countItem();
-            int randomNumber = (int) ((Math.random() * length));
-            MainActivity mnl = (MainActivity)getActivity();
-            Menu currentMenu = (Menu)adapter.getItem(randomNumber);
-            mnl.passMenu(currentMenu);
+            try {
+                int length = this.presenter.countItem();
+                int randomNumber = (int) ((Math.random() * length));
+                MainActivity mnl = (MainActivity)getActivity();
+                Menu currentMenu = (Menu)adapter.getItem(randomNumber);
+                mnl.passMenu(currentMenu);
+            } catch (Exception e) {
+                Toast.makeText(getActivity(),"Menu Belum Tersedia",Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 
