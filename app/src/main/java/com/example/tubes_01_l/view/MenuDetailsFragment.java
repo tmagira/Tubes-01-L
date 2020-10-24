@@ -48,31 +48,33 @@ public class MenuDetailsFragment extends Fragment implements View.OnClickListene
             this.tvDeskripsi.setText(menu.getDeskripsi());
 
             String tags = "";
-            for (int i = 0; i < menu.getTagArr().length; i++) {
-                if (i != menu.getTagArr().length - 1) {
-                    tags += menu.getTagArr()[i] + ", ";
+            for (int i = 0; i < menu.getTag().length(); i++) {
+                if (i != menu.getTag().length() - 1) {
+                    tags = menu.getTag() ;
                 } else {
-                    tags += menu.getTagArr()[i];
+                    tags = menu.getTag();
                 }
             }
             this.tvTag.setText(tags);
 
             String bahan = "";
-            for (int i = 0; i < menu.getBahanArr().length; i++) {
-                bahan += menu.getBahanArr()[i] + "\n";
+            for (int i = 0; i < menu.getBahan().length(); i++) {
+                bahan = menu.getBahan() + "\n";
             }
             this.tvBahan.setText(bahan);
 
             String langkah = "";
-            langkah = menu.getLangkahMasak();
+            for(int i=0;i<menu.getLangkahMasak().length();i++){
+                langkah =menu.getLangkahMasak()+"\n";
+            }
             this.tvLangkah.setText(langkah);
 
             String resto = "";
-            for (int i = 0; i < menu.getRestoArr().length; i++) {
-                if (i != menu.getRestoArr().length - 1) {
-                    resto += menu.getRestoArr()[i] + ", ";
+            for (int i = 0; i < menu.getResto().length(); i++) {
+                if (i != menu.getResto().length() - 1) {
+                    resto = menu.getResto() + ", ";
                 } else {
-                    resto += menu.getRestoArr()[i];
+                    resto = menu.getResto();
                 }
             }
             this.tvResto.setText(resto);

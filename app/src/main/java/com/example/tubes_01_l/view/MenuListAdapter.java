@@ -59,12 +59,8 @@ public class MenuListAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup parent) {
         View convertView = LayoutInflater.from(this.activity).inflate(R.layout.item_list_menu, parent, false);
         Menu currentMenu = (Menu)this.getItem(i);
-
         ViewHolder viewHolder = new ViewHolder(convertView);
         viewHolder.title.setText(currentMenu.getTitle());
-
         return convertView;
     }
-
-
 }

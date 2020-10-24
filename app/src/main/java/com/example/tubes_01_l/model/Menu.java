@@ -99,6 +99,7 @@ public class Menu implements Parcelable {
         String result = "";
         for (int i = 0; i < bahan.length; i++) {
             result+=bahan[i] +", ";
+
         }
         return result;
     }
@@ -110,7 +111,8 @@ public class Menu implements Parcelable {
     public String getLangkahMasak() {
         String result = "";
         for (int i = 0; i < langkahMasak.length; i++) {
-            result+=i+1+langkahMasak[i] +"\n";
+            result+=(i+1)+". "+langkahMasak[i] +"\n";
+
         }
         return result;
     }
@@ -122,7 +124,8 @@ public class Menu implements Parcelable {
     public String getResto() {
         String result = "";
         for (int i = 0; i < resto.length; i++) {
-            result+=i+1+resto[i] +"\n";
+            result+=(i+1)+". "+resto[i]+"\n";
+
         }
         return result;
     }

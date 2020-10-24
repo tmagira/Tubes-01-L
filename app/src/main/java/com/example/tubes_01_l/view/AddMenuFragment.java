@@ -33,9 +33,9 @@ public class AddMenuFragment extends Fragment implements View.OnClickListener{
 
         this.sqlite =new Sqlite(this.getActivity());
         this.edTitle = view.findViewById(R.id.ed_new_title);
-        this.edDesc = view.findViewById(R.id.ed_new_bahan);
+        this.edDesc = view.findViewById(R.id.ed_new_desc);
         this.edTag = view.findViewById(R.id.ed_new_tag);
-        this.edBahan = view.findViewById(R.id.ed_new_tag);
+        this.edBahan = view.findViewById(R.id.ed_new_bahan);
         this.edLangkah = view.findViewById(R.id.ed_new_langkah);
         this.edResto = view.findViewById(R.id.ed_new_resto);
         this.btnAdd = view.findViewById(R.id.btn_tambah_makanan);
@@ -71,30 +71,13 @@ public class AddMenuFragment extends Fragment implements View.OnClickListener{
             Menu item = new Menu(0,this.newTitle, this.newDesc, this.newTag, this.newBahan, this.newLangkah, this.newResto);
             this.sqlite.addRecord(item);
             listener.changePage(2);
-            edTitle.clearComposingText();
-            edDesc.clearComposingText();
-            edTag.clearComposingText();
-            edBahan.clearComposingText();
-            edLangkah.clearComposingText();
-            edResto.clearComposingText();
+            edTitle.setText(null);
+            edDesc.setText(null);
+            edTag.setText(null);
+            edBahan.setText(null);
+            edLangkah.setText(null);
+            edResto.setText(null);
         }
-        else {
-            this.sqlite.getContact(0);
-            this.newTitle = this.edTitle.getText().toString();
-            this.newDesc = this.edDesc.getText().toString();
-            this.newTag = this.edTag.getText().toString().split(",");
-            this.newBahan = this.edBahan.getText().toString().split(",");
-            this.newLangkah = this.edLangkah.getText().toString().split(",");
-            this.newResto = this.edResto.getText().toString().split(",");
-            Menu item = new Menu(0,this.newTitle, this.newDesc, this.newTag, this.newBahan, this.newLangkah, this.newResto);
-            this.sqlite.updateContact(item);
-            listener.changePage(2);
-            edTitle.clearComposingText();
-            edDesc.clearComposingText();
-            edTag.clearComposingText();
-            edBahan.clearComposingText();
-            edLangkah.clearComposingText();
-            edResto.clearComposingText();
-        }
+
     }
 }
