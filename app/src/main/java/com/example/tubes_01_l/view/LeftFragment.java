@@ -14,6 +14,8 @@ import com.example.tubes_01_l.presenter.MenuPresenter;
 import com.example.tubes_01_l.databinding.FragmentLeftBinding;
 import com.example.tubes_01_l.model.Menu;
 
+import java.util.Random;
+
 public class LeftFragment extends Fragment implements View.OnClickListener {
     FragmentListener listener;
     FragmentLeftBinding binding;

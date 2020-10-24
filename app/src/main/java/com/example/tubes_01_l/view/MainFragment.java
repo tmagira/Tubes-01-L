@@ -70,9 +70,6 @@ public class MainFragment extends Fragment implements MenuPresenter.IMainActivit
         }
     }
 
-    public static MainFragment getInstance() {
-        return instance;
-    }
 
     @Override
     public void updateList(List<Menu> foods) {

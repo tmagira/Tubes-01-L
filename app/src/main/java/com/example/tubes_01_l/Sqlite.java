@@ -61,8 +61,9 @@ public class Sqlite extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MENU);
         onCreate(db);
     }
-    public void addRecord(Menu Menu){
-        SQLiteDatabase db  = getWritableDatabase();
+
+    public void addRecord(Menu Menu) {
+        SQLiteDatabase db = getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_TITLE, Menu.getTitle());
@@ -74,20 +75,38 @@ public class Sqlite extends SQLiteOpenHelper {
         db.insert(TABLE_MENU, null, values);
         db.close();
     }
+
     public Menu getContact(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_MENU, new String[] { KEY_ID,
-                        KEY_TITLE, KEY_DESKRIPSI,KEY_TAG,KEY_BAHAN,KEY_LANGKAH,KEY_RESTO }, KEY_ID + "=?",
-                new String[] { String.valueOf(id) }, null, null, null, null);
+        Cursor cursor = db.query(TABLE_MENU, new String[]{KEY_ID,
+                        KEY_TITLE, KEY_DESKRIPSI, KEY_TAG, KEY_BAHAN, KEY_LANGKAH, KEY_RESTO}, KEY_ID + "=?",
+                new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
         Menu contact = new Menu(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getString(2),cursor.getString(3).split(","),cursor.getString(4).split(","),cursor.getString(5).split(","),cursor.getString(6).split(","));
+                cursor.getString(1), cursor.getString(2), cursor.getString(3).split(","), cursor.getString(4).split(","), cursor.getString(5).split(","), cursor.getString(6).split(","));
         // return contact
         return contact;
     }
+
+    //update record
+    public int updateContact(Menu contact) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_TITLE, contact.getTitle());
+        values.put(KEY_DESKRIPSI, contact.getDeskripsi());
+        values.put(KEY_TAG,contact.getTag());
+        values.put(KEY_BAHAN,contact.getBahan());
+        values.put(KEY_LANGKAH,contact.getLangkahMasak());
+        values.put(KEY_RESTO,contact.getResto());
+        // updating row
+        return db.update(TABLE_MENU, values, KEY_ID + " = ?",
+                new String[]{String.valueOf(contact.getId())});
+    }
+
     // get All Record
     public List<Menu> getAllRecord() {
         List<Menu> contactList = new ArrayList<Menu>();

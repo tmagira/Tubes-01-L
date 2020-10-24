@@ -13,20 +13,24 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.tubes_01_l.R;
+import com.example.tubes_01_l.Sqlite;
 import com.example.tubes_01_l.model.Menu;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class MenuDetailsFragment extends Fragment {
+public class MenuDetailsFragment extends Fragment implements View.OnClickListener{
     private FragmentManager fragmentManager;
     private FragmentListener listener;
 
     public TextView tvTitle, tvDeskripsi, tvTag, tvBahan, tvLangkah, tvResto;
-    public Button bt;
+    public FloatingActionButton fabEdit;
+    private Sqlite sqlite;
 
-    public MenuDetailsFragment(){}
+    public MenuDetailsFragment() {
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.menu_details_fragment,container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.menu_details_fragment, container, false);
 
         this.tvTitle = view.findViewById(R.id.details_title);
         this.tvDeskripsi = view.findViewById(R.id.details_deskripsi);
@@ -34,68 +38,69 @@ public class MenuDetailsFragment extends Fragment {
         this.tvBahan = view.findViewById(R.id.details_bahan);
         this.tvLangkah = view.findViewById(R.id.details_langkah_masak);
         this.tvResto = view.findViewById(R.id.details_resto);
-        this.bt= view.findViewById(R.id.btn_tambah_makanan);
-
+        this.fabEdit = view.findViewById(R.id.fab_edit);
+        this.fabEdit.setOnClickListener(this);
+        this.sqlite = new Sqlite(this.getActivity());
         Bundle b = getArguments();
-            if(b!=null){
-                Menu menu = b.getParcelable("menu");
-                this.tvTitle.setText(menu.getTitle());
-                this.tvDeskripsi.setText(menu.getDeskripsi());
+        if (b != null) {
+            Menu menu = b.getParcelable("menu");
+            this.tvTitle.setText(menu.getTitle());
+            this.tvDeskripsi.setText(menu.getDeskripsi());
 
-                String tags = "";
-                for(int i=0;i<menu.getTagArr().length;i++){
-                    if(i!=menu.getTagArr().length-1){
-                        tags+=menu.getTagArr()[i]+", ";
-                    }else{
-                        tags+=menu.getTagArr()[i];
-                    }
+            String tags = "";
+            for (int i = 0; i < menu.getTagArr().length; i++) {
+                if (i != menu.getTagArr().length - 1) {
+                    tags += menu.getTagArr()[i] + ", ";
+                } else {
+                    tags += menu.getTagArr()[i];
                 }
-                this.tvTag.setText(tags);
-
-                String bahan = "";
-                for(int i=0;i<menu.getBahanArr().length;i++){
-                    bahan+= menu.getBahanArr()[i] + "\n";
-                }
-                this.tvBahan.setText(bahan);
-
-                String langkah = "";
-                for(int i=0;i<menu.getLangkahMasakArr().length;i++){
-                    int j=0;
-                    langkah+=i+j+". "+menu.getLangkahMasakArr()[i]+"\n";
-                    j++;
-                }
-                this.tvLangkah.setText(langkah);
-
-                String resto="";
-                for(int i=0;i<menu.getRestoArr().length;i++){
-                    if(i!=menu.getRestoArr().length-1){
-                        resto+=menu.getRestoArr()[i]+", ";
-                    }else{
-                        resto+=menu.getRestoArr()[i];
-                    }
-                }
-                this.tvResto.setText(resto);
-
-            }else{
-                Log.d("debug", "onCreateView: Menu Not Found");
             }
+            this.tvTag.setText(tags);
+
+            String bahan = "";
+            for (int i = 0; i < menu.getBahanArr().length; i++) {
+                bahan += menu.getBahanArr()[i] + "\n";
+            }
+            this.tvBahan.setText(bahan);
+
+            String langkah = "";
+            langkah = menu.getLangkahMasak();
+            this.tvLangkah.setText(langkah);
+
+            String resto = "";
+            for (int i = 0; i < menu.getRestoArr().length; i++) {
+                if (i != menu.getRestoArr().length - 1) {
+                    resto += menu.getRestoArr()[i] + ", ";
+                } else {
+                    resto += menu.getRestoArr()[i];
+                }
+            }
+            this.tvResto.setText(resto);
+
+        } else {
+            Log.d("debug", "onCreateView: Menu Not Found");
+        }
         return view;
     }
 
     @Override
-    public void onAttach(Context context){
+    public void onAttach(Context context) {
         super.onAttach(context);
-        if(context instanceof FragmentListener){
+        if (context instanceof FragmentListener) {
             this.listener = (FragmentListener) context;
-        }else{
-            throw new ClassCastException(context.toString()+ " Must Implement Fragment Listener");
+        } else {
+            throw new ClassCastException(context.toString() + " Must Implement Fragment Listener");
         }
     }
 
-    public static MenuDetailsFragment newInstance(){
+    public static MenuDetailsFragment newInstance() {
         MenuDetailsFragment fragment = new MenuDetailsFragment();
         return fragment;
     }
 
-
+    public void onClick(View v) {
+        if (v.getId() == this.fabEdit.getId()) {
+            listener.changePage(4);
+        }
+    }
 }
