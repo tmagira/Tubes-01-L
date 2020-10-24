@@ -1,4 +1,4 @@
-package com.example.tubes_01_l;
+package com.example.tubes_01_l.view;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.tubes_01_l.R;
+import com.example.tubes_01_l.model.Menu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +61,7 @@ public class MenuListAdapter extends BaseAdapter {
         Menu currentMenu = (Menu)this.getItem(i);
 
         ViewHolder viewHolder = new ViewHolder(convertView);
-        viewHolder.title.setText(currentMenu.title);
+        viewHolder.title.setText(currentMenu.getTitle());
 
         return convertView;
     }

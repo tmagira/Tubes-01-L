@@ -1,4 +1,4 @@
-package com.example.tubes_01_l;
+package com.example.tubes_01_l.view;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,12 +12,16 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.tubes_01_l.R;
+import com.example.tubes_01_l.Sqlite;
+import com.example.tubes_01_l.model.Menu;
+
 public class AddMenuFragment extends Fragment implements View.OnClickListener{
     private FragmentManager fragmentManager;
     private FragmentListener listener;
     private TextView edTitle, edDesc, edTag, edBahan, edLangkah, edResto;
     private Button btnAdd;
-
+    private Sqlite sqlite;
     private String newTitle, newDesc;
     private String[] newTag, newBahan, newLangkah, newResto;
 
@@ -26,8 +30,8 @@ public class AddMenuFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_menu_add,container, false);
-        Sqlite.FeedReaderDbHelper dbHelper = new Sqlite.FeedReaderDbHelper(getContext());
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        this.sqlite =new Sqlite(this.getActivity());
         this.edTitle = view.findViewById(R.id.ed_new_title);
         this.edDesc = view.findViewById(R.id.ed_new_bahan);
         this.edTag = view.findViewById(R.id.ed_new_tag);
@@ -64,7 +68,9 @@ public class AddMenuFragment extends Fragment implements View.OnClickListener{
             this.newBahan = this.edBahan.getText().toString().split(",");
             this.newLangkah = this.edLangkah.getText().toString().split(",");
             this.newResto = this.edResto.getText().toString().split(",");
-
+            Menu item = new Menu(0,this.newTitle, this.newDesc, this.newTag, this.newBahan, this.newLangkah, this.newResto);
+            this.sqlite.addRecord(item);
+            listener.changePage(2);
         }
     }
 }

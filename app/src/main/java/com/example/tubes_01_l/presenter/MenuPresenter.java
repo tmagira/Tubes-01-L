@@ -1,27 +1,30 @@
-package com.example.tubes_01_l;
+package com.example.tubes_01_l.presenter;
 
+
+import com.example.tubes_01_l.MockMenu;
+import com.example.tubes_01_l.Sqlite;
+import com.example.tubes_01_l.model.Menu;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MenuPresenter {
 
-    interface IMainActivity{
+   public interface IMainActivity{
         void updateList(List<Menu>foods);
     }
-
+    protected Sqlite sqlite;
     protected List<Menu> menus;
     protected IMainActivity ui;
 
-    public MenuPresenter(IMainActivity ui){
+    public MenuPresenter(IMainActivity ui,Sqlite sqlite){
         this.menus = new ArrayList<>();
         this.ui = ui;
+        this.sqlite=sqlite;
     }
 
     public void loadData(){
-        for (Menu menu:MockMenu.foodObjectArr) {
-            this.menus.add(menu);
-        }
+       this.menus=sqlite.getAllRecord();
         this.ui.updateList(this.menus);
     }
 

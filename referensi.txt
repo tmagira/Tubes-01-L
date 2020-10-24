@@ -1,1 +1,3 @@
 https://codelabs.developers.google.com/codelabs/android-room-with-a-view/#3
+
+https://medium.com/@dimasvm/tutorial-android-penggunaan-sqlite-sebagai-database-lokal-c206db29571d

@@ -1,4 +1,4 @@
-package com.example.tubes_01_l;
+package com.example.tubes_01_l.view;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +12,10 @@ import android.widget.ListView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.tubes_01_l.Sqlite;
+import com.example.tubes_01_l.presenter.MenuPresenter;
+import com.example.tubes_01_l.R;
+import com.example.tubes_01_l.model.Menu;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -24,15 +28,15 @@ public class MenuFragment extends Fragment implements MenuPresenter.IMainActivit
     private FragmentManager fragmentManager;
     private FragmentListener listener;
     private FloatingActionButton fabAdd;
-
+    private Sqlite sqlite;
     public MenuFragment(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.menu_fragment,container, false);
-
+    this.sqlite = new Sqlite(this.getActivity());
         this.listMenus = view.findViewById(R.id.list_menu);
-        this.presenter = new MenuPresenter((MenuPresenter.IMainActivity) this);
+        this.presenter = new MenuPresenter((MenuPresenter.IMainActivity) this,sqlite);
         this.adapter = new MenuListAdapter(requireActivity());
         this.fabAdd = view.findViewById(R.id.fab_add);
 

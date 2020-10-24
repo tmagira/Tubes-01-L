@@ -1,4 +1,4 @@
-package com.example.tubes_01_l;
+package com.example.tubes_01_l.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -22,7 +22,7 @@ public class Menu implements Parcelable {
         this.langkahMasak  = langkahMasak;
         this.resto = resto;
     }
-
+    public Menu(){}
     public Menu(Parcel in) {
         title = in.readString();
         deskripsi = in.readString();
@@ -43,7 +43,7 @@ public class Menu implements Parcelable {
             return new Menu[size];
         }
     };
-    public void setTitle(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -83,19 +83,51 @@ public class Menu implements Parcelable {
         return deskripsi;
     }
 
-    public String[] getTag() {
-        return tag;
+    public String getTag() {
+        String result = "";
+        for (int i = 0; i < tag.length; i++) {
+            result+=tag[i] +" ";
+        }
+        return result;
     }
 
-    public String[] getBahan() {
+    public String[] getTagArr(){
+            return tag;
+    }
+
+    public String getBahan() {
+        String result = "";
+        for (int i = 0; i < bahan.length; i++) {
+            result+=bahan[i] +" ";
+        }
+        return result;
+    }
+
+    public String[] getBahanArr(){
         return bahan;
     }
 
-    public String[] getLangkahMasak() {
+    public String getLangkahMasak() {
+        String result = "";
+        for (int i = 0; i < langkahMasak.length; i++) {
+            result+=langkahMasak[i] +" ";
+        }
+        return result;
+    }
+
+    public String[] getLangkahMasakArr(){
         return langkahMasak;
     }
 
-    public String[] getResto() {
+    public String getResto() {
+        String result = "";
+        for (int i = 0; i < resto.length; i++) {
+            result+=resto[i] +" ";
+        }
+        return result;
+    }
+
+    public String[] getRestoArr(){
         return resto;
     }
 

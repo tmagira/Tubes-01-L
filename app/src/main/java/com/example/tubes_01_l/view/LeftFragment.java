@@ -1,4 +1,4 @@
-package com.example.tubes_01_l;
+package com.example.tubes_01_l.view;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,9 +9,10 @@ import android.content.Context;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.tubes_01_l.FragmentListener;
-import com.example.tubes_01_l.MainActivity;
+import com.example.tubes_01_l.Sqlite;
+import com.example.tubes_01_l.presenter.MenuPresenter;
 import com.example.tubes_01_l.databinding.FragmentLeftBinding;
+import com.example.tubes_01_l.model.Menu;
 
 public class LeftFragment extends Fragment implements View.OnClickListener {
     FragmentListener listener;
@@ -20,7 +21,7 @@ public class LeftFragment extends Fragment implements View.OnClickListener {
     MainActivity activity;
     private MenuPresenter presenter;
     private MenuListAdapter adapter;
-
+    private Sqlite sqlite;
     public LeftFragment() {
     }
 
@@ -60,11 +61,11 @@ public class LeftFragment extends Fragment implements View.OnClickListener {
             this.activity.changePage(2);
         } else if (v.getId() == binding.exit.getId()) {
             this.activity.closeApplication();
-        } else if (v.getId() == binding.cari.getId()) {
+        }else if(v.getId()==binding.cari.getId()){
             int length = this.presenter.countItem();
             int randomNumber = (int) ((Math.random() * length));
-            MainActivity mnl = (MainActivity) getActivity();
-            Menu currentMenu = (Menu) adapter.getItem(randomNumber);
+            MainActivity mnl = (MainActivity)getActivity();
+            Menu currentMenu = (Menu)adapter.getItem(randomNumber);
             mnl.passMenu(currentMenu);
         }
     }

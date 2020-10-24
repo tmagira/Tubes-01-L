@@ -1,5 +1,7 @@
 package com.example.tubes_01_l;
 
+import com.example.tubes_01_l.model.Menu;
+
 public class MockMenu {
 
     private static String[] mockArray = {"satu", "dua"};

@@ -1,4 +1,4 @@
-package com.example.tubes_01_l;
+package com.example.tubes_01_l.view;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,6 +10,11 @@ import android.widget.Button;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.tubes_01_l.Sqlite;
+import com.example.tubes_01_l.presenter.MenuPresenter;
+import com.example.tubes_01_l.R;
+import com.example.tubes_01_l.model.Menu;
+
 import java.util.List;
 
 public class MainFragment extends Fragment implements MenuPresenter.IMainActivity, View.OnClickListener{
@@ -18,15 +23,16 @@ public class MainFragment extends Fragment implements MenuPresenter.IMainActivit
     private MenuPresenter presenter;
     private MenuListAdapter adapter;
     private Button btnCari;
-
+    private Sqlite sqlite;
     public MainFragment(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_main,container, false);
 
+        this.sqlite = new Sqlite(this.getActivity());
         this.btnCari = view.findViewById(R.id.btn_cari);
-        this.presenter = new MenuPresenter((MenuPresenter.IMainActivity) this);
+        this.presenter = new MenuPresenter((MenuPresenter.IMainActivity) this,sqlite);
         this.adapter = new MenuListAdapter(requireActivity());
 
         this.presenter.loadData();
@@ -62,6 +68,10 @@ public class MainFragment extends Fragment implements MenuPresenter.IMainActivit
             Menu currentMenu = (Menu)adapter.getItem(randomNumber);
             mnl.passMenu(currentMenu);
         }
+    }
+
+    public static MainFragment getInstance() {
+        return instance;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.example.tubes_01_l;
+package com.example.tubes_01_l.view;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +11,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.tubes_01_l.R;
 import com.example.tubes_01_l.databinding.ActivityMainBinding;
+import com.example.tubes_01_l.model.Menu;
 
 
 public class MainActivity extends AppCompatActivity implements FragmentListener {
@@ -34,8 +36,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         View view = this.binding.getRoot();
         setContentView(view);
 
-       // this.setSupportActionBar(this.binding.toolbar);
-
+       this.setSupportActionBar(this.binding.toolbar);
         ActionBarDrawerToggle abdt = new ActionBarDrawerToggle(this, this.binding.drawerLayout, this.binding.toolbar, 0, 0);
         this.binding.drawerLayout.addDrawerListener(abdt);
         abdt.syncState();
@@ -58,62 +59,24 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
             }
         });
         ft.add(R.id.fragment_container, this.mainFragment).addToBackStack(null).commit();
-
+       // changePage(1);
     }
 
     @Override
     public void changePage(int page) {
         this.ft = this.fragmentManager.beginTransaction();
 
-        if (page == 1) {
-            Log.d("debug", "changePage: page1");
-            if (this.mainFragment.isAdded()) {
-                ft.show(this.mainFragment);
-            } else {
-                ft.add(R.id.fragment_container, this.mainFragment).addToBackStack(null);
-            }
-            if (this.menuFragment.isAdded()) {
-                ft.hide(this.menuFragment);
-            }
-            if (this.menuDetailsFragment.isAdded()) {
-                ft.hide(this.menuDetailsFragment);
-            }
-        } else if (page == 2) {
-            if (this.menuFragment.isAdded()) {
-                ft.show(this.menuFragment);
-            } else {
-                ft.add(R.id.fragment_container, this.menuFragment).addToBackStack(null);
-            }
-            if (this.mainFragment.isAdded()) {
-                ft.hide(this.mainFragment);
-            }
-            if(this.menuDetailsFragment.isAdded()){
-                ft.hide(this.menuDetailsFragment);
-            }
-        }else if (page == 3) {
-            if (this.menuDetailsFragment.isAdded()) {
-                ft.show(this.menuDetailsFragment);
-            } else {
-                ft.add(R.id.fragment_container, this.menuDetailsFragment).addToBackStack(null);
-            }
-            if (this.mainFragment.isAdded()) {
-                ft.hide(this.mainFragment);
-            }
-            if(this.menuFragment.isAdded()){
-                ft.hide((this.menuFragment));
-            }
-        }else if (page == 4) {
-            if (this.addMenuFragment.isAdded()) {
-                ft.show(this.addMenuFragment);
-            } else {
-                ft.add(R.id.fragment_container, this.addMenuFragment).addToBackStack(null);
-            }
-            if (this.mainFragment.isAdded()) {
-                ft.hide(this.mainFragment);
-            }
-            if(this.menuFragment.isAdded()){
-                ft.hide((this.menuFragment));
-            }
+        if(page == 1){
+            ft.replace(R.id.fragment_container, this.mainFragment).addToBackStack(null);
+        } else if(page == 2){
+            ft.replace(R.id.fragment_container, this.menuFragment).addToBackStack(null);
+        }else if(page == 3){
+            ft.replace(R.id.fragment_container, this.menuDetailsFragment).addToBackStack(null);
+        }else if(page == 4){
+            ft.replace(R.id.fragment_container, this.addMenuFragment).addToBackStack(null);
+        }else if(page == 5){
+            ft.replace(R.id.fragment_container, this.addMenuFragment).addToBackStack(null);
+
         }
 
         this.ft.commit();

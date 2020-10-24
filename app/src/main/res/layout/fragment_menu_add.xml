@@ -1,130 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20sp"
-        android:text="Tambah Makanan"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:id="@+id/judul"
-        />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nama Makanan"
-        android:layout_below="@id/judul"
-        android:id="@+id/nm1"
-        />
 
-    <EditText
-        android:id="@+id/ed_new_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10sp"
-        android:layout_below="@+id/nm1"
-        />
+        <TextView
+            android:id="@+id/judul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20sp"
+            android:text="Tambah Makanan"
+            android:textAlignment="center"
+            android:textSize="30sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Deskripsi Makanan"
-        android:layout_below="@+id/ed_new_title"
-        android:id="@+id/dm1"
-        />
+        <TextView
+            android:id="@+id/nm1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/judul"
+            android:text="Nama Makanan" />
 
-    <EditText
-        android:id="@+id/ed_new_desc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10sp"
-        android:layout_below="@id/dm1"
-        />
+        <EditText
+            android:id="@+id/ed_new_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nm1"
+            android:layout_marginBottom="10sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tag(s)"
-        android:layout_below="@id/ed_new_desc"
-        android:id="@+id/tg"
-        />
+        <TextView
+            android:id="@+id/dm1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ed_new_title"
+            android:text="Deskripsi Makanan" />
 
-    <EditText
-        android:id="@+id/ed_new_tag"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10sp"
-        android:hint="(Pisahkan dengan tanda koma)"
-        android:inputType="textMultiLine"
-        android:layout_below="@+id/tg"
-        />
+        <EditText
+            android:id="@+id/ed_new_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dm1"
+            android:layout_marginBottom="10sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bahan-bahan"
-        android:layout_below="@+id/ed_new_tag"
-        android:id="@+id/bb"
-        />
+        <TextView
+            android:id="@+id/tg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ed_new_desc"
+            android:text="Tag(s)" />
 
-    <EditText
-        android:id="@+id/ed_new_bahan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10sp"
-        android:hint="(Pisahkan dengan tanda koma)"
-        android:inputType="textMultiLine"
-        android:layout_below="@id/bb"
-        />
+        <EditText
+            android:id="@+id/ed_new_tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tg"
+            android:layout_marginBottom="10sp"
+            android:hint="(Pisahkan dengan tanda koma)"
+            android:inputType="textMultiLine" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Langkah Memasak"
-        android:layout_below="@id/ed_new_bahan"
-        android:id="@+id/lm"
-        />
+        <TextView
+            android:id="@+id/bb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ed_new_tag"
+            android:text="Bahan-bahan" />
 
-    <EditText
-        android:id="@+id/ed_new_langkah"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10sp"
-        android:hint="(Pisahkan dengan tanda koma)"
-        android:inputType="textMultiLine"
-        android:layout_below="@id/lm"
-        />
+        <EditText
+            android:id="@+id/ed_new_bahan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bb"
+            android:layout_marginBottom="10sp"
+            android:hint="(Pisahkan dengan tanda koma)"
+            android:inputType="textMultiLine" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tersedia di Restoran"
-        android:layout_below="@id/ed_new_langkah"
-        android:id="@+id/resto"
-        />
+        <TextView
+            android:id="@+id/lm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ed_new_bahan"
+            android:text="Langkah Memasak" />
 
-    <EditText
-        android:id="@+id/ed_new_resto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10sp"
-        android:hint="(Pisahkan dengan tanda koma)"
-        android:inputType="textMultiLine"
-        android:layout_below="@+id/resto"
-        />
+        <EditText
+            android:id="@+id/ed_new_langkah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lm"
+            android:layout_marginBottom="10sp"
+            android:hint="(Pisahkan dengan tanda koma)"
+            android:inputType="textMultiLine" />
 
-    <Button
-        android:id="@+id/btn_tambah_makanan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ed_new_resto"
-        android:text="Tambah Makanan"
-         />
+        <TextView
+            android:id="@+id/resto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ed_new_langkah"
+            android:text="Tersedia di Restoran" />
 
-</RelativeLayout>
+        <EditText
+            android:id="@+id/ed_new_resto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/resto"
+            android:layout_marginBottom="10sp"
+            android:hint="(Pisahkan dengan tanda koma)"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/btn_tambah_makanan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ed_new_resto"
+            android:text="Tambah Makanan" />
+
+    </RelativeLayout>
+</ScrollView>

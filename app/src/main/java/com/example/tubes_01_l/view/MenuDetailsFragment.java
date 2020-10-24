@@ -1,4 +1,4 @@
-package com.example.tubes_01_l;
+package com.example.tubes_01_l.view;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+
+import com.example.tubes_01_l.R;
+import com.example.tubes_01_l.model.Menu;
 
 public class MenuDetailsFragment extends Fragment {
     private FragmentManager fragmentManager;
@@ -36,37 +39,39 @@ public class MenuDetailsFragment extends Fragment {
         Bundle b = getArguments();
             if(b!=null){
                 Menu menu = b.getParcelable("menu");
-                this.tvTitle.setText(menu.title);
-                this.tvDeskripsi.setText(menu.deskripsi);
+                this.tvTitle.setText(menu.getTitle());
+                this.tvDeskripsi.setText(menu.getDeskripsi());
 
                 String tags = "";
-                for(int i=0;i<menu.tag.length;i++){
-                    if(i!=menu.tag.length-1){
-                        tags+=menu.tag[i]+", ";
+                for(int i=0;i<menu.getTagArr().length;i++){
+                    if(i!=menu.getTagArr().length-1){
+                        tags+=menu.getTagArr()[i]+", ";
                     }else{
-                        tags+=menu.tag[i];
+                        tags+=menu.getTagArr()[i];
                     }
                 }
                 this.tvTag.setText(tags);
 
                 String bahan = "";
-                for(int i=0;i<menu.bahan.length;i++){
-                    bahan+= menu.bahan[i] + "\n";
+                for(int i=0;i<menu.getBahanArr().length;i++){
+                    bahan+= menu.getBahanArr()[i] + "\n";
                 }
                 this.tvBahan.setText(bahan);
 
                 String langkah = "";
-                for(int i=0;i<menu.langkahMasak.length;i++){
-                    langkah+=i+1+". "+menu.langkahMasak[i]+"\n";
+                for(int i=0;i<menu.getLangkahMasakArr().length;i++){
+                    int j=0;
+                    langkah+=i+j+". "+menu.getLangkahMasakArr()[i]+"\n";
+                    j++;
                 }
                 this.tvLangkah.setText(langkah);
 
                 String resto="";
-                for(int i=0;i<menu.resto.length;i++){
-                    if(i!=menu.resto.length-1){
-                        resto+=menu.resto[i]+", ";
+                for(int i=0;i<menu.getRestoArr().length;i++){
+                    if(i!=menu.getRestoArr().length-1){
+                        resto+=menu.getRestoArr()[i]+", ";
                     }else{
-                        resto+=menu.resto[i];
+                        resto+=menu.getRestoArr()[i];
                     }
                 }
                 this.tvResto.setText(resto);
