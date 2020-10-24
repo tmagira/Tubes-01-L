@@ -1,3 +1,5 @@
 https://codelabs.developers.google.com/codelabs/android-room-with-a-view/#3
 
 https://medium.com/@dimasvm/tutorial-android-penggunaan-sqlite-sebagai-database-lokal-c206db29571d
+
+https://www.nextpit.com/forum/702210/how-to-update-a-value-using-sqlite-in-android
