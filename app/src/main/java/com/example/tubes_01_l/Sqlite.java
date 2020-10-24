@@ -136,7 +136,7 @@ public class Sqlite extends SQLiteOpenHelper {
     public List<Menu> getFilteredRecord(String tag) {
         List<Menu> contactList = new ArrayList<Menu>();
 
-        String selectQuery = "SELECT  * FROM " + TABLE_MENU + " WHERE "+ KEY_TITLE +"  IN (" + tag + ")";
+        String selectQuery = "SELECT  * FROM " + TABLE_MENU + " WHERE "+ KEY_TITLE +" LIKE '%" + tag + "%'";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);

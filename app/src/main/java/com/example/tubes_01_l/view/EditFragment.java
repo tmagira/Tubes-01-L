@@ -6,35 +6,22 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-<<<<<<< HEAD
 import android.widget.Button;
-import android.widget.TextView;
-=======
 import android.widget.EditText;
->>>>>>> 7b36f0d65d594fc99138455b73fb9c9bd368de12
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.tubes_01_l.R;
-<<<<<<< HEAD
 import com.example.tubes_01_l.Sqlite;
 import com.example.tubes_01_l.model.Menu;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-=======
-import com.example.tubes_01_l.model.Menu;
->>>>>>> 7b36f0d65d594fc99138455b73fb9c9bd368de12
 
 public class EditFragment extends Fragment implements View.OnClickListener {
-
-<<<<<<< HEAD
     private FragmentManager fragmentManager;
-=======
     private EditText edTitle, edDesc, edTag, edBahan, edLangkah, edResto;
 
->>>>>>> 7b36f0d65d594fc99138455b73fb9c9bd368de12
     private FragmentListener listener;
-    private TextView edTitle, edDesc, edTag, edBahan, edLangkah, edResto;
+    //private TextView edTitle, edDesc, edTag, edBahan, edLangkah, edResto;
     private Button btnEdit,btnHapus;
     private Sqlite sqlite;
     private String newTitle, newDesc;
@@ -55,16 +42,14 @@ public class EditFragment extends Fragment implements View.OnClickListener {
         this.btnEdit = view.findViewById(R.id.btn_edit);
         this.btnHapus=view.findViewById(R.id.btn_hapus);
 
-<<<<<<< HEAD
         this.btnEdit.setOnClickListener(this);
         this.btnHapus.setOnClickListener(this);
-=======
-        this.edTitle = view.findViewById(R.id.ed_new_title);
-        this.edDesc = view.findViewById(R.id.ed_new_desc);
-        this.edTag = view.findViewById(R.id.ed_new_tag);
-        this.edBahan = view.findViewById(R.id.ed_new_bahan);
-        this.edLangkah = view.findViewById(R.id.ed_new_langkah);
-        this.edResto = view.findViewById(R.id.ed_new_resto);
+//        this.edTitle = view.findViewById(R.id.ed_new_title);
+//        this.edDesc = view.findViewById(R.id.ed_new_desc);
+//        this.edTag = view.findViewById(R.id.ed_new_tag);
+//        this.edBahan = view.findViewById(R.id.ed_new_bahan);
+//        this.edLangkah = view.findViewById(R.id.ed_new_langkah);
+//        this.edResto = view.findViewById(R.id.ed_new_resto);
 
         Bundle b = getArguments();
         if (b != null) {
@@ -111,7 +96,6 @@ public class EditFragment extends Fragment implements View.OnClickListener {
             Log.d("debug", "onCreateView: Menu Not Found");
         }
 
->>>>>>> 7b36f0d65d594fc99138455b73fb9c9bd368de12
         return view;
     }
 

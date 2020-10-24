@@ -70,21 +70,21 @@ public class CariFragment extends Fragment implements MenuPresenter.IMainActivit
     @Override
     public void onClick(View v) {
         if(v==this.btnCari){
-            String[] input = this.edCari.getText().toString().toLowerCase().replaceAll(" ","").split(",");
+            String input = this.edCari.getText().toString().toLowerCase();
 
             String filter = "";
-            for(int i=0;i<input.length;i++){
-                if(input.length==1){
-                    filter+="'"+input[i]+"'";
-                }else{
-                    if(i!=input.length-1){
-                        filter+="'"+input[i]+"',";
-                    }else{
-                        filter+="'"+input[i]+"'";
-                    }
-                }
-            }
-            this.presenter.loadSearchResult(filter);
+//            for(int i=0;i<input.length;i++){
+//                if(input.length==1){
+//                    filter+="'"+input[i]+"'";
+//                }else{
+//                    if(i!=input.length-1){
+//                        filter+="'"+input[i]+"',";
+//                    }else{
+//                        filter+="'"+input[i]+"'";
+//                    }
+//                }
+//            }
+            this.presenter.loadSearchResult(input);
             this.listMenus.setAdapter(this.adapter);
         }
     }
