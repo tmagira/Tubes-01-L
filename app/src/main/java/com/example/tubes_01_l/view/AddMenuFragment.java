@@ -1,7 +1,6 @@
 package com.example.tubes_01_l.view;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,10 +63,10 @@ public class AddMenuFragment extends Fragment implements View.OnClickListener{
         if(v==this.btnAdd){
             this.newTitle = this.edTitle.getText().toString();
             this.newDesc = this.edDesc.getText().toString();
-            this.newTag = this.edTag.getText().toString().split(",");
-            this.newBahan = this.edBahan.getText().toString().split(",");
-            this.newLangkah = this.edLangkah.getText().toString().split(",");
-            this.newResto = this.edResto.getText().toString().split(",");
+            this.newTag = this.edTag.getText().toString().replaceAll(" ", "").split(",");
+            this.newBahan = this.edBahan.getText().toString().replaceAll(" ", "").split(",");
+            this.newLangkah = this.edLangkah.getText().toString().replaceAll(" ", "").split(",");
+            this.newResto = this.edResto.getText().toString().replaceAll(" ", "").split(",");
             Menu item = new Menu(0,this.newTitle, this.newDesc, this.newTag, this.newBahan, this.newLangkah, this.newResto);
             this.sqlite.addRecord(item);
             listener.changePage(2);
