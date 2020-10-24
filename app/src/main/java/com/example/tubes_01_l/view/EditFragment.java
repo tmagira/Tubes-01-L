@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.EditText;
+
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -15,13 +17,19 @@ import androidx.fragment.app.FragmentManager;
 import com.example.tubes_01_l.R;
 import com.example.tubes_01_l.Sqlite;
 import com.example.tubes_01_l.model.Menu;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import com.example.tubes_01_l.model.Menu;
+
 
 public class EditFragment extends Fragment implements View.OnClickListener {
+
     private FragmentManager fragmentManager;
+
     private EditText edTitle, edDesc, edTag, edBahan, edLangkah, edResto;
 
+
     private FragmentListener listener;
-    //private TextView edTitle, edDesc, edTag, edBahan, edLangkah, edResto;
     private Button btnEdit,btnHapus;
     private Sqlite sqlite;
     private String newTitle, newDesc;
@@ -32,29 +40,20 @@ public class EditFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_edit, container, false);
-        this.sqlite = new Sqlite(this.getActivity());
+
         this.edTitle = view.findViewById(R.id.ed_new_title);
         this.edDesc = view.findViewById(R.id.ed_new_desc);
         this.edTag = view.findViewById(R.id.ed_new_tag);
         this.edBahan = view.findViewById(R.id.ed_new_bahan);
         this.edLangkah = view.findViewById(R.id.ed_new_langkah);
         this.edResto = view.findViewById(R.id.ed_new_resto);
-        this.btnEdit = view.findViewById(R.id.btn_edit);
         this.btnHapus=view.findViewById(R.id.btn_hapus);
-
-        this.btnEdit.setOnClickListener(this);
-        this.btnHapus.setOnClickListener(this);
-//        this.edTitle = view.findViewById(R.id.ed_new_title);
-//        this.edDesc = view.findViewById(R.id.ed_new_desc);
-//        this.edTag = view.findViewById(R.id.ed_new_tag);
-//        this.edBahan = view.findViewById(R.id.ed_new_bahan);
-//        this.edLangkah = view.findViewById(R.id.ed_new_langkah);
-//        this.edResto = view.findViewById(R.id.ed_new_resto);
+        this.btnEdit=view.findViewById(R.id.btn_edit);
 
         Bundle b = getArguments();
         if (b != null) {
             Menu menu = b.getParcelable("editMenu");
-            Log.d("edit", "onCreateView: "+menu.getId());
+            Log.d("edit", "onCreateView: " + menu.getId());
 
             this.edTitle.setText(menu.getTitle());
             this.edDesc.setText(menu.getDeskripsi());
@@ -62,33 +61,33 @@ public class EditFragment extends Fragment implements View.OnClickListener {
 
             String[] arrBahan = menu.getBahan().split("\n");
             String bahan = "";
-            for(int i=0;i<arrBahan.length;i++){
-               if(i==arrBahan.length-1){
-                   bahan+=arrBahan[i];
-               }else {
-                   bahan+=arrBahan[i]+", ";
-               }
+            for (int i = 0; i < arrBahan.length; i++) {
+                if (i == arrBahan.length - 1) {
+                    bahan += arrBahan[i];
+                } else {
+                    bahan += arrBahan[i] + ", ";
+                }
             }
             this.edBahan.setText(bahan);
 
             String[] arrLangkah = menu.getLangkahMasak().split("\n");
             String langkah = "";
-            for(int i=0;i<arrLangkah.length;i++){
-                if(i==arrLangkah.length-1){
-                    langkah+=arrLangkah[i];
-                }else {
-                    langkah+=arrLangkah[i]+", ";
+            for (int i = 0; i < arrLangkah.length; i++) {
+                if (i == arrLangkah.length - 1) {
+                    langkah += arrLangkah[i];
+                } else {
+                    langkah += arrLangkah[i] + ", ";
                 }
             }
             this.edLangkah.setText(langkah);
 
             String[] arrResto = menu.getResto().split("\n");
             String resto = "";
-            for(int i=0;i<arrResto.length;i++){
-                if(i==arrResto.length-1){
-                    resto+=arrResto[i];
-                }else {
-                    resto+=arrResto[i]+", ";
+            for (int i = 0; i < arrResto.length; i++) {
+                if (i == arrResto.length - 1) {
+                    resto += arrResto[i];
+                } else {
+                    resto += arrResto[i] + ", ";
                 }
             }
             this.edResto.setText(resto);
@@ -98,6 +97,7 @@ public class EditFragment extends Fragment implements View.OnClickListener {
 
         return view;
     }
+
 
     @Override
     public void onAttach(Context context) {
@@ -121,7 +121,6 @@ public class EditFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if (v == this.btnEdit) {
             Menu item = new Menu(0, this.newTitle, this.newDesc, this.newTag, this.newBahan, this.newLangkah, this.newResto);
-            this.sqlite.getFilteredRecord(this.newTitle);
             this.newTitle = this.edTitle.getText().toString().toLowerCase();
             this.newDesc = this.edDesc.getText().toString();
             this.newTag = this.edTag.getText().toString().replaceAll(" ", "").split(",");

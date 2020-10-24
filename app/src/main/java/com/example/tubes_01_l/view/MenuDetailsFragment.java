@@ -23,7 +23,6 @@ public class MenuDetailsFragment extends Fragment implements View.OnClickListene
     public TextView tvTitle, tvDeskripsi, tvTag, tvBahan, tvLangkah, tvResto;
     public FloatingActionButton fabEdit;
     private Sqlite sqlite;
-    private Bundle b;
 
     public MenuDetailsFragment() {
     }
@@ -41,8 +40,7 @@ public class MenuDetailsFragment extends Fragment implements View.OnClickListene
         this.fabEdit = view.findViewById(R.id.fab_edit);
         this.fabEdit.setOnClickListener(this);
         this.sqlite = new Sqlite(this.getActivity());
-
-        this.b = getArguments();
+        Bundle b = getArguments();
         if (b != null) {
             Menu menu = b.getParcelable("menu");
             this.tvTitle.setText(menu.getTitle());
@@ -103,16 +101,7 @@ public class MenuDetailsFragment extends Fragment implements View.OnClickListene
 
     public void onClick(View v) {
         if (v.getId() == this.fabEdit.getId()) {
-
             listener.changePage(7);
-
-            
-           //this.sqlite.updateContact();
-
-            MainActivity mnl = (MainActivity)getActivity();
-            Menu thisMenu = b.getParcelable("menu");
-            mnl.editMenu(thisMenu);
-
         }
     }
 }
