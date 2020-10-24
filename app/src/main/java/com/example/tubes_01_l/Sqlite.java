@@ -158,6 +158,12 @@ public class Sqlite extends SQLiteOpenHelper {
         // return contact list
         return contactList;
     }
+
+    public void deleteRecord(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete(TABLE_MENU, KEY_ID + " = " + id, null);
+    }
 }
 
 

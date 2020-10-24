@@ -45,6 +45,8 @@ public class EditFragment extends Fragment implements View.OnClickListener {
         this.btnHapus=view.findViewById(R.id.btn_hapus);
         this.btnEdit=view.findViewById(R.id.btn_edit);
 
+        this.btnHapus.setOnClickListener(this);
+
         Bundle b = getArguments();
         if (b != null) {
             Menu idMenu = b.getParcelable("editMenu");
@@ -139,7 +141,9 @@ public class EditFragment extends Fragment implements View.OnClickListener {
             edResto.setText(null);
         }
         else if(v==this.btnHapus){
-
+            Log.d("edit", "hapus: "+this.menu.getId());
+            sqlite.deleteRecord(this.menu.getId());
+            listener.changePage(2);
         }
     }
 }
