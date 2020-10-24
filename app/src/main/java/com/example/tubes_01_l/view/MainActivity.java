@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     private MainFragment mainFragment;
     private MenuDetailsFragment menuDetailsFragment;
     private AddMenuFragment addMenuFragment;
+    private CariFragment cariFragment;
 
 
     FragmentManager fragmentManager;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         this.menuFragment = MenuFragment.newInstance();
         this.menuDetailsFragment = MenuDetailsFragment.newInstance();
         this.addMenuFragment = AddMenuFragment.newInstance();
+        this.cariFragment = CariFragment.newInstance();
 
         FragmentTransaction ft = this.fragmentManager.beginTransaction();
         fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
@@ -76,8 +78,9 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
             ft.replace(R.id.fragment_container, this.addMenuFragment).addToBackStack(null);
         }else if(page == 5){
             ft.replace(R.id.fragment_container, this.addMenuFragment).addToBackStack(null);
+        }else if(page == 6) {
+            ft.replace(R.id.fragment_container, this.cariFragment).addToBackStack(null);
         }
-
         this.ft.commit();
         this.binding.drawerLayout.closeDrawers();
     }

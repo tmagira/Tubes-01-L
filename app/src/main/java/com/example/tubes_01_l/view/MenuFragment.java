@@ -34,7 +34,7 @@ public class MenuFragment extends Fragment implements MenuPresenter.IMainActivit
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.menu_fragment,container, false);
-    this.sqlite = new Sqlite(this.getActivity());
+        this.sqlite = new Sqlite(this.getActivity());
         this.listMenus = view.findViewById(R.id.list_menu);
         this.presenter = new MenuPresenter((MenuPresenter.IMainActivity) this,sqlite);
         this.adapter = new MenuListAdapter(requireActivity());

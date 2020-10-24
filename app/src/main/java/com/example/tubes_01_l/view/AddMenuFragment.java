@@ -61,7 +61,7 @@ public class AddMenuFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v==this.btnAdd){
-            this.newTitle = this.edTitle.getText().toString();
+            this.newTitle = this.edTitle.getText().toString().toLowerCase();
             this.newDesc = this.edDesc.getText().toString();
             this.newTag = this.edTag.getText().toString().replaceAll(" ", "").split(",");
             this.newBahan = this.edBahan.getText().toString().replaceAll(" ", "").split(",");

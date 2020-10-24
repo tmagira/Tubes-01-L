@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.BaseColumns;
 
 import androidx.annotation.Nullable;
 
@@ -112,6 +111,32 @@ public class Sqlite extends SQLiteOpenHelper {
         List<Menu> contactList = new ArrayList<Menu>();
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_MENU;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Menu Menu = new Menu();
+                Menu.setId(Integer.parseInt(cursor.getString(0)));
+                Menu.setTitle(cursor.getString(1));
+                Menu.setDeskripsi(cursor.getString(2));
+                Menu.setTag(cursor.getString(3).split(","));
+                Menu.setBahan(cursor.getString(4).split(","));
+                Menu.setLangkahMasak(cursor.getString(5).split(","));
+                Menu.setResto(cursor.getString(6).split(","));
+                contactList.add(Menu);
+            } while (cursor.moveToNext());
+        }
+
+        // return contact list
+        return contactList;
+    }
+
+    public List<Menu> getFilteredRecord(String tag) {
+        List<Menu> contactList = new ArrayList<Menu>();
+
+        String selectQuery = "SELECT  * FROM " + TABLE_MENU + " WHERE "+ KEY_TITLE +"  IN (" + tag + ")";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);

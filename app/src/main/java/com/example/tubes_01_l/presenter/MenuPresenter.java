@@ -1,7 +1,6 @@
 package com.example.tubes_01_l.presenter;
 
 
-import com.example.tubes_01_l.MockMenu;
 import com.example.tubes_01_l.Sqlite;
 import com.example.tubes_01_l.model.Menu;
 
@@ -25,6 +24,11 @@ public class MenuPresenter {
 
     public void loadData(){
        this.menus=sqlite.getAllRecord();
+        this.ui.updateList(this.menus);
+    }
+
+    public void loadSearchResult(String tag){
+        this.menus=sqlite.getFilteredRecord(tag);
         this.ui.updateList(this.menus);
     }
 
