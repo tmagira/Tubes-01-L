@@ -24,6 +24,8 @@ public class MenuDetailsFragment extends Fragment implements View.OnClickListene
     public FloatingActionButton fabEdit;
     private Sqlite sqlite;
 
+    private Menu menu;
+
     public MenuDetailsFragment() {
     }
 
@@ -42,7 +44,7 @@ public class MenuDetailsFragment extends Fragment implements View.OnClickListene
         this.sqlite = new Sqlite(this.getActivity());
         Bundle b = getArguments();
         if (b != null) {
-            Menu menu = b.getParcelable("menu");
+            this.menu = b.getParcelable("menu");
             this.tvTitle.setText(menu.getTitle());
             this.tvDeskripsi.setText(menu.getDeskripsi());
 
@@ -101,7 +103,8 @@ public class MenuDetailsFragment extends Fragment implements View.OnClickListene
 
     public void onClick(View v) {
         if (v.getId() == this.fabEdit.getId()) {
-            listener.changePage(7);
+            MainActivity mnl = (MainActivity)getActivity();
+            mnl.passEdit(this.menu);
         }
     }
 }

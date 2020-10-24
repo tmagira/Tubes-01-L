@@ -103,4 +103,12 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         this.menuDetailsFragment.setArguments(bundle);
         changePage(3);
     }
+
+    public void passEdit(Menu menu){
+        this.ft = this.fragmentManager.beginTransaction();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("editMenu", menu);
+        this.editFragment.setArguments(bundle);
+        changePage(7);
+    }
 }
