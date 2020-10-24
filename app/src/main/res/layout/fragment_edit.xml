@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20sp"
-            android:text="Edit Makanan"
+            android:text="Edit Menu"
             android:textAlignment="center"
             android:textSize="30sp" />
 

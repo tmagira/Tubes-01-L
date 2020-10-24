@@ -2,6 +2,7 @@ package com.example.tubes_01_l.view;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,10 @@ import android.widget.ListView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.example.tubes_01_l.R;
 import com.example.tubes_01_l.Sqlite;
-import com.example.tubes_01_l.model.Menu;
 import com.example.tubes_01_l.presenter.MenuPresenter;
+import com.example.tubes_01_l.R;
+import com.example.tubes_01_l.model.Menu;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -47,9 +48,11 @@ public class MenuFragment extends Fragment implements MenuPresenter.IMainActivit
         this.listMenus.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("debug", "onItemClick: clicked "+position);
                 MainActivity mnl = (MainActivity)getActivity();
                 Menu currentMenu = (Menu)adapter.getItem(position);
                 mnl.passMenu(currentMenu);
+
             }
         });
 

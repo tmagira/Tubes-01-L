@@ -103,7 +103,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         this.menuDetailsFragment.setArguments(bundle);
         changePage(3);
     }
-
     public void editMenu(Menu menu){
         this.ft = this.fragmentManager.beginTransaction();
         Bundle bn = new Bundle();
