@@ -35,8 +35,6 @@ public class EditFragment extends Fragment implements View.OnClickListener {
     private String newTitle, newDesc;
     private String[] newTag, newBahan, newLangkah, newResto;
     private Menu menu;
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_edit, container, false);
@@ -47,8 +45,6 @@ public class EditFragment extends Fragment implements View.OnClickListener {
         this.edBahan = view.findViewById(R.id.ed_new_bahan);
         this.edLangkah = view.findViewById(R.id.ed_new_langkah);
         this.edResto = view.findViewById(R.id.ed_new_resto);
-        this.btnHapus=view.findViewById(R.id.btn_hapus);
-        this.btnEdit=view.findViewById(R.id.btn_edit);
 
         Bundle b = getArguments();
         if (b != null) {
