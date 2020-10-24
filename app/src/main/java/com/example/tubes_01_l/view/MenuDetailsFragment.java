@@ -101,7 +101,7 @@ public class MenuDetailsFragment extends Fragment implements View.OnClickListene
 
     public void onClick(View v) {
         if (v.getId() == this.fabEdit.getId()) {
-            listener.changePage(4);
+            listener.changePage(7);
         }
     }
 }
