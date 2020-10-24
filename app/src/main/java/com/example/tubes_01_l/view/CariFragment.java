@@ -2,7 +2,6 @@ package com.example.tubes_01_l.view;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -87,8 +86,6 @@ public class CariFragment extends Fragment implements MenuPresenter.IMainActivit
             }
             this.presenter.loadSearchResult(filter);
             this.listMenus.setAdapter(this.adapter);
-
-            Log.d("sq", "onClick: " + filter);
         }
     }
 }
