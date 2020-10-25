@@ -15,20 +15,12 @@ import java.util.List;
 
 public class Sqlite extends SQLiteOpenHelper {
 
-
-    // To prevent someone from accidentally instantiating the contract class,
-    // make the constructor private.
-
-    // static variable
     private static final int DATABASE_VERSION = 1;
 
-    // Database name
     private static final String DATABASE_NAME = "Daftar Menu";
 
-    // table name
     private static final String TABLE_MENU = "Menu";
 
-    // column tables
     private static final String KEY_ID = "id";
     private static final String KEY_TITLE = "title";
     private static final String KEY_DESKRIPSI = "deskripsi";
@@ -45,7 +37,6 @@ public class Sqlite extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
 
-    //Create table
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_MENU + "("
@@ -54,7 +45,6 @@ public class Sqlite extends SQLiteOpenHelper {
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
 
-    // on Upgrade database
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MENU);
@@ -86,11 +76,9 @@ public class Sqlite extends SQLiteOpenHelper {
 
         Menu contact = new Menu(Integer.parseInt(cursor.getString(0)),
                 cursor.getString(1), cursor.getString(2), cursor.getString(3).split(","), cursor.getString(4).split(","), cursor.getString(5).split(","), cursor.getString(6).split(","));
-        // return contact
         return contact;
     }
 
-    //update record
     public int updateContact(Menu contact) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -101,15 +89,15 @@ public class Sqlite extends SQLiteOpenHelper {
         values.put(KEY_BAHAN,contact.getBahan());
         values.put(KEY_LANGKAH,contact.getLangkahMasak());
         values.put(KEY_RESTO,contact.getResto());
-        // updating row
+
         return db.update(TABLE_MENU, values, KEY_ID + " = ?",
                 new String[]{String.valueOf(contact.getId())});
     }
 
-    // get All Record
+
     public List<Menu> getAllRecord() {
         List<Menu> contactList = new ArrayList<Menu>();
-        // Select All Query
+
         String selectQuery = "SELECT  * FROM " + TABLE_MENU;
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -129,7 +117,7 @@ public class Sqlite extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
 
-        // return contact list
+
         return contactList;
     }
 
@@ -154,8 +142,7 @@ public class Sqlite extends SQLiteOpenHelper {
                 contactList.add(Menu);
             } while (cursor.moveToNext());
         }
-
-        // return contact list
+        
         return contactList;
     }
 

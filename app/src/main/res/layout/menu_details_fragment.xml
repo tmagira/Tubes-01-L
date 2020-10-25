@@ -31,6 +31,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="15dp"
             android:text="Deskripsi :" />
 
             <TextView
@@ -38,6 +39,7 @@
                 android:layout_marginLeft="10sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="15dp"
                 android:text="Deskripsi tidak ditemukan" />
 
         </LinearLayout>
@@ -51,6 +53,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="15dp"
                 android:text="Tag :" />
 
             <TextView
@@ -58,6 +61,7 @@
                 android:layout_marginLeft="10sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="15dp"
                 android:text="tag tidak ditemukan" />
 
         </LinearLayout>
@@ -71,6 +75,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="15dp"
                 android:text="Bahan :" />
 
             <TextView
@@ -78,6 +83,7 @@
                 android:layout_marginLeft="10sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="15dp"
                 android:text="bahan tidak ditemukan" />
 
         </LinearLayout>
@@ -91,6 +97,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="15dp"
                 android:text="Langkah Memasak :" />
 
             <TextView
@@ -98,6 +105,7 @@
                 android:layout_marginLeft="10sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="15dp"
                 android:text="langkah tidak ditemukan" />
 
         </LinearLayout>
@@ -110,6 +118,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="15dp"
                 android:text="Tersedia di Resto :" />
 
             <TextView
@@ -117,6 +126,7 @@
                 android:layout_marginLeft="10sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="15dp"
                 android:text="resto tidak ditemukan" />
 
         </LinearLayout>
