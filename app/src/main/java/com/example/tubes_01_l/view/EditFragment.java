@@ -192,11 +192,10 @@ public class EditFragment extends Fragment implements View.OnClickListener {
             String[] newBahan = this.edBahan.getText().toString().replaceAll(" ", "").split(",");
             String[] newLangkah = this.edLangkah.getText().toString().replaceAll(" ", "").split(",");
             String[] newResto = this.edResto.getText().toString().replaceAll(" ", "").split(",");
-            Menu item = new Menu(0,newTitle, newDesc, newTag, newBahan, newLangkah, newResto);
+            Menu item = new Menu(this.menu.getId(),newTitle, newDesc, newTag, newBahan, newLangkah, newResto);
 
-            Log.d("inputnya", "onClick: "+newTitle);
-            //this.sqlite.updateContact(item);
-            //listener.changePage(2);
+            this.sqlite.updateContact(item);
+            listener.changePage(2);
             edTitle.setText(null);
             edDesc.setText(null);
             edTag.setText(null);
@@ -205,7 +204,6 @@ public class EditFragment extends Fragment implements View.OnClickListener {
             edResto.setText(null);
         }
         else if(v==this.btnHapus){
-            Log.d("edit", "hapus: "+this.menu.getId());
             sqlite.deleteRecord(this.menu.getId());
             listener.changePage(2);
         }
