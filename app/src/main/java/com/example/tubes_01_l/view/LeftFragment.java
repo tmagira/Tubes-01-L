@@ -67,6 +67,8 @@ public class LeftFragment extends Fragment implements View.OnClickListener {
 //            MainActivity mnl = (MainActivity)getActivity();
 //            Menu currentMenu = (Menu)adapter.getItem(randomNumber);
 //            mnl.passMenu(currentMenu);
+        }else if (v.getId() == binding.setting.getId()) {
+            this.activity.changePage(8);
         }
     }
 

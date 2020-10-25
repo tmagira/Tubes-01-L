@@ -3,6 +3,7 @@ package com.example.tubes_01_l.view;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Switch;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.example.tubes_01_l.R;
 import com.example.tubes_01_l.databinding.ActivityMainBinding;
@@ -24,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     private AddMenuFragment addMenuFragment;
     private CariFragment cariFragment;
     private EditFragment editFragment;
-
+    private SettingFragment settingFragment;
 
     FragmentManager fragmentManager;
     FragmentTransaction ft;
@@ -38,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         View view = this.binding.getRoot();
         setContentView(view);
 
-       this.setSupportActionBar(this.binding.toolbar);
+        this.setSupportActionBar(this.binding.toolbar);
         ActionBarDrawerToggle abdt = new ActionBarDrawerToggle(this, this.binding.drawerLayout, this.binding.toolbar, 0, 0);
         this.binding.drawerLayout.addDrawerListener(abdt);
         abdt.syncState();
@@ -51,39 +55,43 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         this.addMenuFragment = AddMenuFragment.newInstance();
         this.cariFragment = CariFragment.newInstance();
         this.editFragment = EditFragment.newInstance();
+        this.settingFragment =SettingFragment.newInstance();
 
         FragmentTransaction ft = this.fragmentManager.beginTransaction();
         fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
                 Fragment fr = fragmentManager.findFragmentById(R.id.menu_list);
-                if(fr!=null){
+                if (fr != null) {
                     Log.e("fragment=", fr.getClass().getSimpleName());
                 }
             }
         });
         ft.add(R.id.fragment_container, this.mainFragment).addToBackStack(null).commit();
-       // changePage(1);
+        // changePage(1);
     }
+
 
     @Override
     public void changePage(int page) {
         this.ft = this.fragmentManager.beginTransaction();
 
-        if(page == 1){
+        if (page == 1) {
             ft.replace(R.id.fragment_container, this.mainFragment).addToBackStack(null);
-        } else if(page == 2){
+        } else if (page == 2) {
             ft.replace(R.id.fragment_container, this.menuFragment).addToBackStack(null);
-        }else if(page == 3){
+        } else if (page == 3) {
             ft.replace(R.id.fragment_container, this.menuDetailsFragment).addToBackStack(null);
-        }else if(page == 4){
+        } else if (page == 4) {
             ft.replace(R.id.fragment_container, this.addMenuFragment).addToBackStack(null);
-        }else if(page == 5){
+        } else if (page == 5) {
             ft.replace(R.id.fragment_container, this.addMenuFragment).addToBackStack(null);
-        }else if(page == 6) {
+        } else if (page == 6) {
             ft.replace(R.id.fragment_container, this.cariFragment).addToBackStack(null);
-        }else if(page == 7) {
+        } else if (page == 7) {
             ft.replace(R.id.fragment_container, this.editFragment).addToBackStack(null);
+        } else if (page==8){
+            ft.replace(R.id.fragment_container, this.settingFragment).addToBackStack(null);
         }
         this.ft.commit();
         this.binding.drawerLayout.closeDrawers();
@@ -104,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         changePage(3);
     }
 
-    public void passEdit(Menu menu){
+    public void passEdit(Menu menu) {
         this.ft = this.fragmentManager.beginTransaction();
         Bundle bundle = new Bundle();
         bundle.putParcelable("editMenu", menu);
