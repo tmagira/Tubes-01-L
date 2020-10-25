@@ -185,23 +185,24 @@ public class EditFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v == this.btnEdit) {
-            this.newTitle = this.edTitle.getText().toString().toLowerCase();
-            this.newDesc = this.edDesc.getText().toString();
-            this.newTag = this.edTag.getText().toString().replaceAll(" ", "").split(",");
-            this.newBahan = this.edBahan.getText().toString().replaceAll(" ", "").split(",");
-            this.newLangkah = this.edLangkah.getText().toString().replaceAll(" ", "").split(",");
-            this.newResto = this.edResto.getText().toString().replaceAll(" ", "").split(",");
-            Menu item = new Menu(0, this.newTitle, this.newDesc, this.newTag, this.newBahan, this.newLangkah, this.newResto);
 
-            Log.d("inputnya", "onClick: "+menu.getTitle());
+            String newTitle = this.edTitle.getText().toString().toLowerCase();
+            String newDesc = this.edDesc.getText().toString();
+            String[] newTag = this.edTag.getText().toString().replaceAll(" ", "").split(",");
+            String[] newBahan = this.edBahan.getText().toString().replaceAll(" ", "").split(",");
+            String[] newLangkah = this.edLangkah.getText().toString().replaceAll(" ", "").split(",");
+            String[] newResto = this.edResto.getText().toString().replaceAll(" ", "").split(",");
+            Menu item = new Menu(0,newTitle, newDesc, newTag, newBahan, newLangkah, newResto);
+
+            Log.d("inputnya", "onClick: "+newTitle);
             //this.sqlite.updateContact(item);
             //listener.changePage(2);
-//            edTitle.setText(null);
-//            edDesc.setText(null);
-//            edTag.setText(null);
-//            edBahan.setText(null);
-//            edLangkah.setText(null);
-//            edResto.setText(null);
+            edTitle.setText(null);
+            edDesc.setText(null);
+            edTag.setText(null);
+            edBahan.setText(null);
+            edLangkah.setText(null);
+            edResto.setText(null);
         }
         else if(v==this.btnHapus){
             Log.d("edit", "hapus: "+this.menu.getId());
