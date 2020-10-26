@@ -3,21 +3,3 @@ https://codelabs.developers.google.com/codelabs/android-room-with-a-view/#3
 https://medium.com/@dimasvm/tutorial-android-penggunaan-sqlite-sebagai-database-lokal-c206db29571d
 
 https://www.nextpit.com/forum/702210/how-to-update-a-value-using-sqlite-in-android
-
-https://medium.com/@jsuch2362/adapter-what-role-is-it-data-view-13c713cdae0b
-
-https://medium.com/cr8resume/make-you-hand-dirty-with-mvp-model-view-presenter-eab5b5c16e42
-
-https://stackoverflow.com/questions/20313070/clickable-listview-in-fragment
-
-https://stackoverflow.com/questions/42950346/get-id-position-of-listview-row
-
-https://stackoverflow.com/questions/48610496/how-to-get-values-of-selected-item-in-listview-android
-
-https://www.youtube.com/watch?v=6hQ62YAO6cM
-
-https://www.codepolitan.com/menggunakan-parcelable-untuk-pengiriman-data-antar-komponen-di-android-599848cf0f158
-
-https://www.youtube.com/watch?v=cASXtRa6yDc
-
-https://code.luasoftware.com/tutorials/android/android-edittext-multiline/

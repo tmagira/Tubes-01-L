@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
             }
         });
         ft.add(R.id.fragment_container, this.mainFragment).addToBackStack(null).commit();
+        // changePage(1);
     }
 
 
