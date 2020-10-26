@@ -44,7 +44,7 @@ public class CariFragment extends Fragment implements MenuPresenter.IMainActivit
         this.sqlite = new Sqlite(this.getActivity());
         this.listMenus = view.findViewById(R.id.list_menu_cari);
         this.presenter = new MenuPresenter((MenuPresenter.IMainActivity) this,sqlite);
-        this.adapter = new MenuListAdapter(requireActivity());
+        this.adapter = new MenuListAdapter(requireActivity()) ;
 
        this.btnCari.setOnClickListener(this);
 

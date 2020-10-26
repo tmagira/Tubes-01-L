@@ -151,4 +151,5 @@ public class Menu implements Parcelable {
         dest.writeStringArray(this.langkahMasak);
         dest.writeStringArray(this.resto);
     }
+    //
 }
