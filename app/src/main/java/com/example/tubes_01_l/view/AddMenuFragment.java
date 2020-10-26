@@ -1,10 +1,12 @@
 package com.example.tubes_01_l.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -69,6 +71,7 @@ public class AddMenuFragment extends Fragment implements View.OnClickListener{
             this.newResto = this.edResto.getText().toString().replaceAll(" ", "").split(",");
             Menu item = new Menu(0,this.newTitle, this.newDesc, this.newTag, this.newBahan, this.newLangkah, this.newResto);
             this.sqlite.addRecord(item);
+            this.hideKeyboard(getActivity());
             listener.changePage(2);
             edTitle.setText(null);
             edDesc.setText(null);
@@ -78,5 +81,14 @@ public class AddMenuFragment extends Fragment implements View.OnClickListener{
             edResto.setText(null);
         }
 
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        View view = activity.getCurrentFocus();
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

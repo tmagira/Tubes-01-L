@@ -1,10 +1,14 @@
 package com.example.tubes_01_l.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -44,6 +48,16 @@ public class CariFragment extends Fragment implements MenuPresenter.IMainActivit
 
        this.btnCari.setOnClickListener(this);
 
+        this.listMenus.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("debug", "onItemClick: clicked "+position);
+                MainActivity mnl = (MainActivity)getActivity();
+                Menu currentMenu = (Menu)adapter.getItem(position);
+                mnl.passMenu(currentMenu);
+            }
+        });
+
         return view;
     }
 
@@ -71,21 +85,18 @@ public class CariFragment extends Fragment implements MenuPresenter.IMainActivit
     public void onClick(View v) {
         if(v==this.btnCari){
             String input = this.edCari.getText().toString().toLowerCase();
-
-            String filter = "";
-//            for(int i=0;i<input.length;i++){
-//                if(input.length==1){
-//                    filter+="'"+input[i]+"'";
-//                }else{
-//                    if(i!=input.length-1){
-//                        filter+="'"+input[i]+"',";
-//                    }else{
-//                        filter+="'"+input[i]+"'";
-//                    }
-//                }
-//            }
             this.presenter.loadSearchResult(input);
             this.listMenus.setAdapter(this.adapter);
+            this.hideKeyboard(getActivity());
         }
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        View view = activity.getCurrentFocus();
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
